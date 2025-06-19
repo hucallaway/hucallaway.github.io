@@ -40,25 +40,20 @@
 			.maintenance-scene {
 				max-width: min(1200px, 95%);
 				height: auto;
-				margin: 0 auto;
+				margin: 0 auto 2em auto;
 				display: block;
 				image-rendering: pixelated;
 				image-rendering: -moz-crisp-edges;
 				image-rendering: crisp-edges;
 			}
 			.maintenance-box {
-				position: fixed;
-				bottom: 2em;
-				left: 50%;
-				transform: translateX(-50%);
 				border: 2px solid var(--ember-orange);
-				padding: 0.5em 1em;
+				padding: 2em;
 				margin: 0 auto;
-				max-width: min(400px, 90%);
+				max-width: min(600px, 90%);
 				box-shadow: 0 0 10px var(--ember-orange);
 				animation: pulse 2s infinite;
 				background-color: rgba(10, 25, 41, 0.9);
-				z-index: 100;
 			}
 			@keyframes pulse {
 				0% { box-shadow: 0 0 10px var(--ember-orange); }
@@ -160,6 +155,10 @@
 							<section style="text-align: center;">
 								<img src="assets/css/images/maintenance-scene.png" alt="A cosmic campfire scene with an astronaut" class="maintenance-scene">
 								<div class="maintenance-box">
+									<h2>Welcome to Hunter's Website!</h2>
+									<p class="pixel-text">
+										I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
+									</p>
 									<div class="accessibility-controls">
 										<button class="accessibility-button pixel-text" onclick="toggleHighContrast()">
 											<span aria-label="Accessibility">♿</span> High Contrast
