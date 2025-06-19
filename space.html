@@ -47,7 +47,7 @@
 				color: var(--text-color);
 				text-decoration: none;
 			}
-			#nav ul {
+			#nav .nav-links {
 				list-style: none;
 				padding: 0;
 				margin: 0;
@@ -64,6 +64,86 @@
 				color: var(--ember-glow) !important;
 				text-shadow: 0 0 8px var(--ember-glow);
 			}
+
+			.nav-toggle {
+				display: none;
+			}
+
+			@media screen and (max-width: 736px) {
+				.nav-toggle {
+					display: block;
+					cursor: pointer;
+					border: none;
+					background: transparent;
+					padding: 0.5em;
+					position: absolute;
+					right: 1.5em;
+					top: 1.5em;
+					z-index: 1001;
+				}
+
+				.hamburger {
+					display: block;
+					position: relative;
+					width: 1.5em;
+					height: 2px;
+					background: var(--text-color);
+					transition: background 0.2s 0.2s ease-in-out;
+				}
+
+				.hamburger::before,
+				.hamburger::after {
+					content: '';
+					position: absolute;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					background: var(--text-color);
+					transition: transform 0.2s ease-in-out;
+				}
+
+				.hamburger::before { top: -6px; }
+				.hamburger::after { top: 6px; }
+
+				#nav .nav-links {
+					display: none;
+					flex-direction: column;
+					position: fixed;
+					top: 0;
+					right: 0;
+					height: 100vh;
+					width: 60%;
+					max-width: 300px;
+					background: var(--space-blue);
+					padding-top: 5em;
+					transform: translateX(100%);
+					transition: transform 0.3s ease-in-out;
+					z-index: 1000;
+					box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+				}
+
+				#nav .nav-links.active {
+					display: flex;
+					transform: translateX(0);
+				}
+				
+				#nav .nav-links li {
+					margin: 1em 2em;
+				}
+
+				#nav.nav-open .hamburger {
+					background: transparent;
+				}
+				
+				#nav.nav-open .hamburger::before {
+					transform: rotate(45deg) translate(3px, 4px);
+				}
+
+				#nav.nav-open .hamburger::after {
+					transform: rotate(-45deg) translate(3px, -4px);
+				}
+			}
+
 			main {
 				display: flex;
 				justify-content: space-between;
@@ -135,7 +215,10 @@
 				<div id="header">
 					<h1><a href="index.html" id="logo">The Lodge</a></h1>
 					<nav id="nav" role="navigation">
-						<ul>
+						<button class="nav-toggle" aria-label="toggle navigation">
+							<span class="hamburger"></span>
+						</button>
+						<ul class="nav-links">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="space.html">Space</a></li>
 						</ul>
@@ -206,5 +289,15 @@
 				</div>
 			</footer>
 		</div>
+		<script>
+			const navToggle = document.querySelector('.nav-toggle');
+			const nav = document.querySelector('#nav');
+			const navLinks = document.querySelector('.nav-links');
+
+			navToggle.addEventListener('click', () => {
+				nav.classList.toggle('nav-open');
+				navLinks.classList.toggle('active');
+			});
+		</script>
 	</body>
 </html> 
