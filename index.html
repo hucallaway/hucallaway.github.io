@@ -121,13 +121,14 @@
 				bottom: 2em;
 				left: 50%;
 				transform: translateX(-50%);
-				background: rgba(10, 25, 41, 0.9);
-				padding: 1.5em;
-				border-radius: 8px;
-				border: 1px solid var(--ember-orange);
-				max-width: 500px;
+				background: rgba(0, 4, 12, 0.95);
+				padding: 2em;
+				border: 2px solid var(--ember-orange);
+				box-shadow: 0 0 20px rgba(230, 126, 34, 0.3);
+				max-width: 600px;
 				width: 90%;
 				z-index: 1000;
+				font-family: 'Courier New', monospace;
 			}
 
 			.maintenance-box {
@@ -177,11 +178,11 @@
 
 			.pixel-text {
 				font-family: 'Courier New', monospace;
-				font-size: 1em;
+				font-size: 1.1em;
 				line-height: 1.4;
 				color: var(--text-color);
-				text-shadow: 0 0 5px var(--ember-orange);
-				margin: 0 0 0.5em 0;
+				margin: 0 0 1.5em 0;
+				letter-spacing: 0.5px;
 			}
 
 			.accessibility-controls {
@@ -192,18 +193,23 @@
 			}
 
 			.accessibility-button {
-				background: var(--space-blue);
-				border: 1px solid var(--ember-orange);
-				padding: 0.4em 0.8em;
-				border-radius: 4px;
+				background: rgba(10, 25, 41, 0.8);
+				border: 2px solid var(--ember-orange);
+				padding: 0.8em 1.2em;
+				border-radius: 0;
 				cursor: pointer;
 				transition: all 0.3s ease;
-				font-size: 0.9em;
+				font-size: 1em;
+				color: var(--text-color);
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				margin: 0 0.5em;
 			}
 
 			.accessibility-button:hover {
 				background: var(--ember-orange);
 				color: var(--space-dark) !important;
+				box-shadow: 0 0 15px var(--ember-glow);
 			}
 
 			/* High contrast mode styles */
@@ -253,24 +259,22 @@
 			</header>
 
 			<main role="main" aria-label="Maintenance Content">
-				<img src="assets/css/images/maintenance-scene.png?v=2" 
-					 alt="A cosmic campfire scene with an astronaut sitting by a fire under a starlit sky with Saturn visible" 
+				<img src="assets/css/images/maintenance-scene-terminal.png?v=3" 
+					 alt="A pixel art maintenance scene with a terminal interface, campfire, and Saturn in the background" 
 					 class="maintenance-scene">
 				
 				<div class="overlay-content">
-					<div class="maintenance-box">
-						<h2>Welcome to Hunter's Website!</h2>
-						<p class="pixel-text">
-							I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
-						</p>
-						<div class="accessibility-controls">
-							<button class="accessibility-button pixel-text" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
-								<span aria-hidden="true">♿</span> High Contrast
-							</button>
-							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
-								<span aria-hidden="true">📱</span> Simplified View
-							</button>
-						</div>
+					<h2>welcome to hunter's website!</h2>
+					<p class="pixel-text">
+						I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
+					</p>
+					<div class="accessibility-controls">
+						<button class="accessibility-button pixel-text" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
+							<span aria-hidden="true">⚡</span> High Contrast
+						</button>
+						<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
+							<span aria-hidden="true">📱</span> Simplified View
+						</button>
 					</div>
 				</div>
 			</main>
