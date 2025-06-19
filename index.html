@@ -91,20 +91,21 @@
 			}
 
 			#header-wrapper {
-				display: none;
+				background-color: var(--space-blue);
+				border-bottom: 2px solid var(--ember-orange);
 			}
 
 			#main {
 				background-color: var(--space-dark);
 				margin: 0;
 				padding: 0;
-				min-height: 100vh;
+				min-height: calc(100vh - 80px);
 				position: relative;
 			}
 
 			.maintenance-scene {
-				width: 100vw;
-				height: 100vh;
+				width: 100%;
+				height: calc(100vh - 80px);
 				object-fit: cover;
 				object-position: center;
 				display: block;
@@ -116,14 +117,17 @@
 			}
 
 			.overlay-content {
-				position: fixed;
-				bottom: 0;
-				left: 0;
-				right: 0;
+				position: absolute;
+				bottom: 2em;
+				left: 50%;
+				transform: translateX(-50%);
 				background: rgba(10, 25, 41, 0.9);
-				padding: 1em;
+				padding: 1.5em;
+				border-radius: 8px;
+				border: 1px solid var(--ember-orange);
+				max-width: 500px;
+				width: 90%;
 				z-index: 1000;
-				border-top: 2px solid var(--ember-orange);
 			}
 
 			.maintenance-box {
@@ -236,8 +240,20 @@
 	</head>
 	<body>
 		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="header">
+								<h1><a href="index.html" id="logo">The Lodge</a></h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+
 			<main role="main" aria-label="Maintenance Content">
-				<img src="assets/css/images/maintenance-scene.png" 
+				<img src="assets/css/images/maintenance-scene.png?v=2" 
 					 alt="A cosmic campfire scene with an astronaut sitting by a fire under a starlit sky with Saturn visible" 
 					 class="maintenance-scene">
 				
