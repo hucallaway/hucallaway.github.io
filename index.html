@@ -106,7 +106,7 @@
 			.maintenance-scene {
 				width: 100%;
 				height: calc(100vh - 80px);
-				object-fit: cover;
+				object-fit: contain;
 				object-position: center;
 				display: block;
 				image-rendering: pixelated;
@@ -114,6 +114,7 @@
 				image-rendering: crisp-edges;
 				margin: 0;
 				padding: 0;
+				background-color: var(--space-dark);
 			}
 
 			.overlay-content {
@@ -222,17 +223,25 @@
 			}
 
 			/* Simplified view styles */
-			.simplified {
-				font-size: 120%;
-				line-height: 1.6;
-			}
-
 			.simplified .maintenance-scene {
-				opacity: 0.3;
+				display: none;
 			}
 
 			.simplified .overlay-content {
-				background: rgba(0, 0, 0, 0.95);
+				position: fixed;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background: var(--space-dark);
+				border: none;
+				box-shadow: none;
+			}
+
+			.simplified h2 {
+				font-size: 2em;
+			}
+
+			.simplified .pixel-text {
+				font-size: 1.2em;
 			}
 
 			/* Responsive adjustments */
@@ -269,9 +278,6 @@
 						I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
 					</p>
 					<div class="accessibility-controls">
-						<button class="accessibility-button pixel-text" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
-							<span aria-hidden="true">⚡</span> High Contrast
-						</button>
 						<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
 							<span aria-hidden="true">📱</span> Simplified View
 						</button>
@@ -300,10 +306,6 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script>
-			function toggleHighContrast() {
-				document.body.classList.toggle('high-contrast');
-			}
-
 			function toggleSimplifiedView() {
 				document.body.classList.toggle('simplified');
 			}
