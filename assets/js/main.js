@@ -17,35 +17,6 @@
 			small:   [ null,      '736px'  ]
 		});
 
-	// Nav.
-
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo').html() + '</span>' +
-				'</div>'
-			)
-				.appendTo($body);
-
-		// Navigation Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+	// Maintenance mode - no navigation needed
 
 })(jQuery);

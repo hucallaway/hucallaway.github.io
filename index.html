@@ -273,14 +273,26 @@
 			.mobile-nav,
 			.mobile-menu,
 			[class*="mobile"],
-			[class*="nav"] {
+			[class*="nav"],
+			.toggle {
 				display: none !important;
+				visibility: hidden !important;
+				opacity: 0 !important;
+				pointer-events: none !important;
+				position: absolute !important;
+				left: -9999px !important;
+				width: 0 !important;
+				height: 0 !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				overflow: hidden !important;
 			}
 
 			/* Ensure header is clean on mobile */
 			#header {
 				text-align: center;
 				padding: 1em 0;
+				position: relative;
 			}
 
 			#header h1 {
@@ -288,11 +300,29 @@
 				font-size: 1.5em;
 			}
 
-			/* Hide any potential mobile menu triggers */
+			/* Remove any potential mobile menu triggers */
 			.menu-toggle,
 			.hamburger,
 			.menu-icon,
-			.nav-toggle {
+			.nav-toggle,
+			button[class*="toggle"],
+			button[class*="nav"],
+			a[class*="toggle"],
+			a[class*="nav"] {
+				display: none !important;
+				visibility: hidden !important;
+				opacity: 0 !important;
+				pointer-events: none !important;
+			}
+
+			/* Override any template styles */
+			body::before,
+			body::after {
+				display: none !important;
+			}
+
+			#header::before,
+			#header::after {
 				display: none !important;
 			}
 		</style>
@@ -304,7 +334,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div id="header">
-								<h1><a href="index.html" id="logo">The Lodge</a></h1>
+								<h1>The Lodge</h1>
 							</div>
 						</div>
 					</div>
