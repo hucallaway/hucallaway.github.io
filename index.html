@@ -68,13 +68,71 @@
 			#main {
 				background-color: var(--space-dark);
 				margin: 0 auto;
-				padding: 0;
-				max-width: 800px;
+				padding: 2em 0;
 				width: 90%;
-				min-height: 100%;
+				max-width: 800px;
+			}
+
+			.main-column {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+			}
+
+			.sidebar-column {
+				display: none;
+			}
+
+			#europa-tracker-container {
+				background: var(--space-blue);
+				border: 2px solid var(--ember-orange);
+				padding: 1.5em;
+				font-family: 'Courier New', monospace;
+				box-shadow: 0 0 15px rgba(230, 126, 34, 0.2);
+			}
+
+			#europa-tracker-container h3 {
+				color: var(--text-color);
+				text-shadow: 0 0 5px var(--ember-orange);
+				margin: 0 0 1em 0;
+				text-align: center;
+				font-size: 1.2em;
+			}
+
+			.tracker-iframe-wrapper {
+				margin-bottom: 1em;
+				border: 1px solid var(--ember-orange);
+			}
+
+			.tracker-caption {
+				font-size: 0.9em;
+				text-align: center;
+				color: var(--text-color);
+				opacity: 0.7;
+				margin: 0;
+			}
+
+			@media screen and (min-width: 981px) {
+				main {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: flex-start;
+					max-width: 1400px;
+				}
+				
+				.main-column {
+					flex: 2;
+					padding-right: 2em;
+					align-items: stretch;
+				}
+
+				.sidebar-column {
+					display: block;
+					flex: 1;
+					position: sticky;
+					top: 2em;
+				}
 			}
 
 			.content-wrapper {
@@ -82,7 +140,6 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				padding: 2em 0;
 			}
 
 			#countdown {
@@ -347,24 +404,45 @@
 			</header>
 
 			<main role="main" aria-label="Maintenance Content">
-				<div class="content-wrapper">
-					<div id="countdown"></div>
-					<img src="assets/css/images/maintenance-deusex.png?v=1" 
-						 alt="A pixel art scene showing a person and an AI playing chess in a spaceship, with Saturn visible through the window" 
-						 class="maintenance-scene">
-					
-					<div class="message-box">
-						<h2>welcome to hunter's website!</h2>
-						<p class="pixel-text">
-							I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
-						</p>
-						<div class="accessibility-controls">
-							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
-								<span aria-hidden="true">📱</span> Simplified View
-							</button>
+				<div class="main-column">
+					<div class="content-wrapper">
+						<div id="countdown"></div>
+						<img src="assets/css/images/maintenance-deusex.png?v=1" 
+							 alt="A pixel art scene showing a person and an AI playing chess in a spaceship, with Saturn visible through the window" 
+							 class="maintenance-scene">
+						
+						<div class="message-box">
+							<h2>welcome to hunter's website!</h2>
+							<p class="pixel-text">
+								I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
+							</p>
+							<div class="accessibility-controls">
+								<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
+									<span aria-hidden="true">📱</span> Simplified View
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
+				<aside class="sidebar-column" aria-label="Europa Clipper Mission Tracker">
+					<div id="europa-tracker-container">
+						<h3>Europa Clipper Mission</h3>
+						<div class="tracker-iframe-wrapper">
+							<!--
+							  Embed Europa Clipper in "Eyes on the Solar System".
+							  - embed=true hides the UI panels for a clean look
+							  - sc_europa_clipper is the mission slug
+							-->
+							<iframe
+							  src="https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true"
+							  width="100%" height="400"
+							  frameborder="0"
+							  allowfullscreen>
+							</iframe>
+						</div>
+						<p class="tracker-caption">Live trajectory from NASA's Eyes on the Solar System.</p>
+					</div>
+				</aside>
 			</main>
 
 			<footer id="footer-wrapper" role="contentinfo">
