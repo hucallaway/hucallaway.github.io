@@ -274,7 +274,11 @@
 			.mobile-menu,
 			[class*="mobile"],
 			[class*="nav"],
-			.toggle {
+			.toggle,
+			#titleBar,
+			.title-bar,
+			[class*="title-"],
+			[id*="title-"] {
 				display: none !important;
 				visibility: hidden !important;
 				opacity: 0 !important;
@@ -286,48 +290,65 @@
 				margin: 0 !important;
 				padding: 0 !important;
 				overflow: hidden !important;
+				clip: rect(0 0 0 0) !important;
+				-webkit-transform: translateY(-100%) !important;
+				transform: translateY(-100%) !important;
 			}
 
-			/* Ensure header is clean on mobile */
+			/* Clean header styles */
+			#header-wrapper {
+				padding: 1em 0 !important;
+				position: relative !important;
+				top: 0 !important;
+				left: 0 !important;
+				width: 100% !important;
+				z-index: 10000 !important;
+			}
+
 			#header {
-				text-align: center;
-				padding: 1em 0;
-				position: relative;
+				text-align: center !important;
+				padding: 0 !important;
+				border: none !important;
+				box-shadow: none !important;
+				background: none !important;
 			}
 
 			#header h1 {
-				margin: 0;
-				font-size: 1.5em;
-			}
-
-			/* Remove any potential mobile menu triggers */
-			.menu-toggle,
-			.hamburger,
-			.menu-icon,
-			.nav-toggle,
-			button[class*="toggle"],
-			button[class*="nav"],
-			a[class*="toggle"],
-			a[class*="nav"] {
-				display: none !important;
-				visibility: hidden !important;
-				opacity: 0 !important;
-				pointer-events: none !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				font-size: 1.5em !important;
+				line-height: 1.5 !important;
+				text-transform: none !important;
 			}
 
 			/* Override any template styles */
 			body::before,
-			body::after {
+			body::after,
+			#header::before,
+			#header::after,
+			#titleBar::before,
+			#titleBar::after {
 				display: none !important;
+				content: none !important;
 			}
 
-			#header::before,
-			#header::after {
+			/* Ensure body doesn't shift */
+			body {
+				padding-top: 0 !important;
+				margin-top: 0 !important;
+			}
+
+			/* Force normal header display */
+			body.navPanel-visible {
+				overflow: auto !important;
+			}
+
+			body.navPanel-visible #titleBar {
 				display: none !important;
 			}
 		</style>
 	</head>
-	<body>
+	<body class="homepage">
 		<div id="page-wrapper">
 			<header id="header-wrapper" role="banner">
 				<div class="container">
