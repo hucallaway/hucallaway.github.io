@@ -77,80 +77,62 @@
 			}
 
 			body {
+				margin: 0;
+				padding: 0;
 				background-color: var(--space-dark);
 				color: var(--text-color);
+				overflow-x: hidden;
 			}
 
 			#page-wrapper {
 				background-color: var(--space-dark);
+				margin: 0;
+				padding: 0;
 			}
 
 			#header-wrapper {
-				background-color: var(--space-blue);
-				border-bottom: 2px solid var(--ember-orange);
+				display: none;
 			}
 
 			#main {
 				background-color: var(--space-dark);
-				min-height: calc(100vh - 200px);
-				display: flex;
-				align-items: center;
-				padding: 2em 0;
+				margin: 0;
+				padding: 0;
+				min-height: 100vh;
+				position: relative;
 			}
 
 			.maintenance-scene {
-				max-width: min(1200px, 95%);
-				height: auto;
-				margin: 0 auto 2em auto;
+				width: 100vw;
+				height: 100vh;
+				object-fit: cover;
+				object-position: center;
 				display: block;
 				image-rendering: pixelated;
 				image-rendering: -moz-crisp-edges;
 				image-rendering: crisp-edges;
+				margin: 0;
+				padding: 0;
+			}
+
+			.overlay-content {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(10, 25, 41, 0.9);
+				padding: 1em;
+				z-index: 1000;
+				border-top: 2px solid var(--ember-orange);
 			}
 
 			.maintenance-box {
-				border: 2px solid var(--ember-orange);
-				padding: 2em;
-				margin: 0 auto;
-				max-width: min(600px, 90%);
-				box-shadow: 0 0 10px var(--ember-orange);
-				animation: pulse 2s infinite;
-				background-color: rgba(10, 25, 41, 0.9);
-				position: relative;
-			}
-
-			.stage-tracker {
-				display: flex;
-				justify-content: space-between;
-				margin: 2em 0;
+				border: none;
 				padding: 1em;
-				border: 1px solid var(--ember-orange);
-				border-radius: 4px;
-				background: rgba(10, 25, 41, 0.6);
-			}
-
-			.stage {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 0.5em;
-				opacity: 0.5;
-				transition: opacity 0.3s ease;
-			}
-
-			.stage.active {
-				opacity: 1;
-			}
-
-			.stage-icon {
-				font-size: 1.5em;
-				text-shadow: 0 0 10px var(--ember-glow);
-			}
-
-			.stage-label {
-				font-size: 0.8em;
-				text-align: center;
-				max-width: 100px;
+				margin: 0 auto;
+				max-width: min(800px, 95%);
+				background: transparent;
+				position: relative;
 			}
 
 			@keyframes pulse {
@@ -171,11 +153,13 @@
 				color: var(--text-color) !important;
 				text-shadow: 0 0 5px var(--ember-orange);
 				font-family: 'Courier New', monospace;
+				margin: 0 0 0.5em 0;
 			}
 
 			#footer-wrapper {
 				background-color: var(--space-blue);
 				border-top: 2px solid var(--ember-orange);
+				margin-top: 0;
 			}
 
 			a {
@@ -189,14 +173,15 @@
 
 			.pixel-text {
 				font-family: 'Courier New', monospace;
-				font-size: 1.2em;
-				line-height: 1.5;
+				font-size: 1em;
+				line-height: 1.4;
 				color: var(--text-color);
 				text-shadow: 0 0 5px var(--ember-orange);
+				margin: 0 0 0.5em 0;
 			}
 
 			.accessibility-controls {
-				margin-top: 2em;
+				margin-top: 1em;
 				display: flex;
 				justify-content: center;
 				gap: 1em;
@@ -205,10 +190,11 @@
 			.accessibility-button {
 				background: var(--space-blue);
 				border: 1px solid var(--ember-orange);
-				padding: 0.5em 1em;
+				padding: 0.4em 0.8em;
 				border-radius: 4px;
 				cursor: pointer;
 				transition: all 0.3s ease;
+				font-size: 0.9em;
 			}
 
 			.accessibility-button:hover {
@@ -231,80 +217,43 @@
 				line-height: 1.6;
 			}
 
-			.simplified .maintenance-scene,
-			.simplified .stage-tracker {
-				display: none;
+			.simplified .maintenance-scene {
+				opacity: 0.3;
 			}
 
-			.simplified .maintenance-box {
-				border: none;
-				box-shadow: none;
-				animation: none;
-				background: var(--space-dark);
+			.simplified .overlay-content {
+				background: rgba(0, 0, 0, 0.95);
+			}
+
+			/* Responsive adjustments */
+			@media (max-width: 768px) {
+				.accessibility-controls {
+					flex-direction: column;
+					align-items: center;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<div id="page-wrapper">
-			<header id="header-wrapper" role="banner">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div id="header">
-								<h1><a href="index.html" id="logo">The Lodge</a></h1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-
 			<main role="main" aria-label="Maintenance Content">
-				<div class="container">
-					<div class="row main-row">
-						<div class="col-12">
-							<section role="region" aria-label="Maintenance Status" style="text-align: center;">
-								<img src="assets/css/images/maintenance-scene.png" 
-									 alt="A cosmic campfire scene with an astronaut sitting by a fire under a starlit sky with Saturn visible" 
-									 class="maintenance-scene">
-								<div class="maintenance-box">
-									<h2>Welcome to Hunter's Website!</h2>
-									<p class="pixel-text">
-										I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
-									</p>
-									<nav role="navigation" aria-label="Maintenance Stages">
-										<div class="stage-tracker" aria-label="Maintenance Progress">
-											<div class="stage active">
-												<span class="stage-icon" aria-hidden="true">☽</span>
-												<span class="stage-label">Assembling Stargate Timber</span>
-											</div>
-											<div class="stage">
-												<span class="stage-icon" aria-hidden="true">✦</span>
-												<span class="stage-label">Aligning Gravity Cushions</span>
-											</div>
-											<div class="stage">
-												<span class="stage-icon" aria-hidden="true">🔥</span>
-												<span class="stage-label">Priming Cosmic Hearth</span>
-											</div>
-											<div class="stage">
-												<span class="stage-icon" aria-hidden="true">❄</span>
-												<span class="stage-label">Stocking Starlight Linens</span>
-											</div>
-											<div class="stage">
-												<span class="stage-icon" aria-hidden="true">🌌</span>
-												<span class="stage-label">Final Starglaze</span>
-											</div>
-										</div>
-									</nav>
-									<div class="accessibility-controls">
-										<button class="accessibility-button pixel-text" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
-											<span aria-hidden="true">♿</span> High Contrast
-										</button>
-										<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
-											<span aria-hidden="true">📱</span> Simplified View
-										</button>
-									</div>
-								</div>
-							</section>
+				<img src="assets/css/images/maintenance-scene.png" 
+					 alt="A cosmic campfire scene with an astronaut sitting by a fire under a starlit sky with Saturn visible" 
+					 class="maintenance-scene">
+				
+				<div class="overlay-content">
+					<div class="maintenance-box">
+						<h2>Welcome to Hunter's Website!</h2>
+						<p class="pixel-text">
+							I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
+						</p>
+						<div class="accessibility-controls">
+							<button class="accessibility-button pixel-text" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
+								<span aria-hidden="true">♿</span> High Contrast
+							</button>
+							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
+								<span aria-hidden="true">📱</span> Simplified View
+							</button>
 						</div>
 					</div>
 				</div>
@@ -338,31 +287,6 @@
 			function toggleSimplifiedView() {
 				document.body.classList.toggle('simplified');
 			}
-
-			// Stage tracker animation
-			document.addEventListener('DOMContentLoaded', function() {
-				const stages = document.querySelectorAll('.stage');
-				let currentStage = 0;
-
-				function updateStages() {
-					stages.forEach((stage, index) => {
-						if (index <= currentStage) {
-							stage.classList.add('active');
-						} else {
-							stage.classList.remove('active');
-						}
-					});
-					currentStage = (currentStage + 1) % stages.length;
-				}
-
-				// Update stages every 3 seconds if animations are not reduced
-				if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-					setInterval(updateStages, 3000);
-				} else {
-					// If reduced motion is preferred, just show all stages
-					stages.forEach(stage => stage.classList.add('active'));
-				}
-			});
 		</script>
 	</body>
 </html> 
