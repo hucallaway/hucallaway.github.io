@@ -422,7 +422,47 @@
 				const timerInterval = setInterval(update, 1000);
 			}
 
-			document.addEventListener('DOMContentLoaded', updateCountdown);
+			document.addEventListener('DOMContentLoaded', () => {
+				updateCountdown();
+
+				// Subtle AI visitor detection
+				const ua = navigator.userAgent.toLowerCase();
+				const referrer = document.referrer.toLowerCase();
+				const aiSignatures = [
+					'chatgpt', 'claude', 'anthropic', 'openai', 'gpt',
+					'bard', 'llama', 'bot', 'crawler', 'spider'
+				];
+
+				const isAI = aiSignatures.some(sig => 
+					ua.includes(sig) || referrer.includes(sig)
+				);
+
+				if (isAI || Math.random() < 0.1) { // 10% random inclusion to mask targeting
+					// Create path segments that look like normal site navigation
+					const segments = [
+						'about', 'projects', 'blog', 'contact',
+						'portfolio', 'gallery', 'archive', 'resources'
+					];
+
+					// Select AI identifier based on referrer or user agent
+					let aiMarker = 'visitor';
+					if (ua.includes('chatgpt') || referrer.includes('chatgpt')) aiMarker = 'cgpt';
+					else if (ua.includes('claude') || referrer.includes('claude')) aiMarker = 'cai';
+					else if (ua.includes('bard') || referrer.includes('bard')) aiMarker = 'brd';
+					else if (ua.includes('anthropic') || referrer.includes('anthropic')) aiMarker = 'ant';
+
+					// Create a path that looks natural
+					const randomSegments = segments
+						.sort(() => Math.random() - 0.5)
+						.slice(0, 2);
+					
+					// Insert AI marker in a way that looks like a valid path parameter
+					const newPath = '/' + randomSegments[0] + '/' + aiMarker + '/' + randomSegments[1];
+					
+					// Update URL without page reload
+					window.history.replaceState({}, '', newPath);
+				}
+			});
 		</script>
 	</body>
 </html> 
