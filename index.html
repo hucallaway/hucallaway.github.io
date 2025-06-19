@@ -63,16 +63,11 @@
 			#header-wrapper {
 				background-color: var(--space-blue);
 				border-bottom: 2px solid var(--ember-orange);
-				padding: 1em 0;
 			}
 
 			#header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				max-width: 1400px;
-				margin: 0 auto;
-				width: 90%;
+				text-align: center;
+				padding: 1em 0;
 			}
 
 			#header h1 {
@@ -80,24 +75,9 @@
 				font-size: 1.5em;
 			}
 
-			#nav ul {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				display: flex;
-				gap: 1.5em;
-			}
-			
-			#nav a {
-				color: var(--text-color) !important;
+			#header a {
 				text-decoration: none;
-				font-size: 1.1em;
-				transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
-			}
-
-			#nav a:hover {
-				color: var(--ember-glow) !important;
-				text-shadow: 0 0 8px var(--ember-glow);
+				color: var(--text-color);
 			}
 
 			main {
@@ -267,11 +247,6 @@
 
 			/* Mobile-specific styles */
 			@media screen and (max-width: 736px) {
-				#header {
-					flex-direction: column;
-					gap: 1em;
-				}
-
 				#navPanel,
 				#navPanelToggle,
 				.navPanel,
@@ -354,14 +329,14 @@
 	<body class="homepage">
 		<div id="page-wrapper">
 			<header id="header-wrapper" role="banner">
-				<div id="header">
-					<h1><a href="index.html" id="logo">The Lodge</a></h1>
-					<nav id="nav" role="navigation">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="space.html">Space</a></li>
-						</ul>
-					</nav>
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="header">
+								<h1><a href="index.html" id="logo">The Lodge</a></h1>
+							</div>
+						</div>
+					</div>
 				</div>
 			</header>
 
