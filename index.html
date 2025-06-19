@@ -13,45 +13,47 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			:root {
-				--terminal-green: #33ff33;
-				--terminal-dark-green: #0a290a;
-				--terminal-mid-green: #1a4d1a;
+				--space-dark: #0a1929;
+				--space-blue: #1a2939;
+				--ember-orange: #e67e22;
+				--ember-glow: #ff9f43;
+				--text-color: #ffffff;
 			}
 			body {
-				background-color: var(--terminal-dark-green);
-				color: var(--terminal-green);
+				background-color: var(--space-dark);
+				color: var(--text-color);
 			}
 			#page-wrapper {
-				background-color: var(--terminal-dark-green);
+				background-color: var(--space-dark);
 			}
 			#header-wrapper {
-				background-color: var(--terminal-mid-green);
-				border-bottom: 2px solid var(--terminal-green);
+				background-color: var(--space-blue);
+				border-bottom: 2px solid var(--ember-orange);
 			}
 			#main {
-				background-color: var(--terminal-dark-green);
+				background-color: var(--space-dark);
 			}
-			.ascii-art {
-				font-family: monospace;
-				white-space: pre;
-				font-size: 14px;
-				line-height: 1.2;
-				text-align: center;
+			.maintenance-scene {
+				max-width: 100%;
+				height: auto;
 				margin: 2em auto;
-				color: var(--terminal-green);
-				text-shadow: 0 0 5px var(--terminal-green);
+				display: block;
+				image-rendering: pixelated;
+				image-rendering: -moz-crisp-edges;
+				image-rendering: crisp-edges;
 			}
 			.maintenance-box {
-				border: 2px solid var(--terminal-green);
+				border: 2px solid var(--ember-orange);
 				padding: 2em;
 				margin: 2em 0;
-				box-shadow: 0 0 10px var(--terminal-green);
+				box-shadow: 0 0 10px var(--ember-orange);
 				animation: pulse 2s infinite;
+				background-color: rgba(10, 25, 41, 0.9);
 			}
 			@keyframes pulse {
-				0% { box-shadow: 0 0 10px var(--terminal-green); }
-				50% { box-shadow: 0 0 20px var(--terminal-green); }
-				100% { box-shadow: 0 0 10px var(--terminal-green); }
+				0% { box-shadow: 0 0 10px var(--ember-orange); }
+				50% { box-shadow: 0 0 20px var(--ember-glow); }
+				100% { box-shadow: 0 0 10px var(--ember-orange); }
 			}
 			.blink {
 				animation: blink 1s steps(1) infinite;
@@ -60,19 +62,27 @@
 				50% { opacity: 0; }
 			}
 			h1, h2 {
-				color: var(--terminal-green) !important;
-				text-shadow: 0 0 5px var(--terminal-green);
+				color: var(--text-color) !important;
+				text-shadow: 0 0 5px var(--ember-orange);
+				font-family: 'Courier New', monospace;
 			}
 			#footer-wrapper {
-				background-color: var(--terminal-mid-green);
-				border-top: 2px solid var(--terminal-green);
+				background-color: var(--space-blue);
+				border-top: 2px solid var(--ember-orange);
 			}
 			a {
-				color: var(--terminal-green) !important;
+				color: var(--ember-orange) !important;
 				text-decoration: none;
 			}
 			a:hover {
-				text-shadow: 0 0 10px var(--terminal-green);
+				text-shadow: 0 0 10px var(--ember-glow);
+			}
+			.pixel-text {
+				font-family: 'Courier New', monospace;
+				font-size: 1.2em;
+				line-height: 1.5;
+				color: var(--text-color);
+				text-shadow: 0 0 5px var(--ember-orange);
 			}
 		</style>
 	</head>
@@ -97,32 +107,22 @@
 					<div class="row main-row">
 						<div class="col-12">
 							<section style="text-align: center;">
-								<div class="ascii-art">
-                                    🌲🌲🌲🌲🌲🌲🌲
-                                    
-    |\\    /\\    /|     SYSTEM STATUS
-    | \\  /  \\  / |     ===============
-    |  \\/    \\/  |     > MAINTENANCE MODE
-    |   |      |  |     > UPDATES IN PROGRESS
-    |   |  []  |  |     > ETA: SOON™
-    |   |      |  |     ===============
-    |   |      |  |     
-    |   |      |  |     🔧 WORKING...
-    |   |      |  |     
-    |___|______|__|     > _
-                                    
-                                    🌲🌲🌲🌲🌲🌲🌲
-								</div>
+								<img src="assets/css/images/maintenance-scene.png" alt="A cosmic campfire scene with an astronaut" class="maintenance-scene">
 								<div class="maintenance-box">
-									<h2>SYSTEM MAINTENANCE IN PROGRESS <span class="blink">_</span></h2>
-									<p style="font-family: monospace; font-size: 1.2em;">
-										> UPDATING CORE SYSTEMS...<br>
-										> OPTIMIZING USER INTERFACE...<br>
-										> ENHANCING CONTENT DELIVERY...<br>
-										<br>
-										> STATUS: WORKING 🔄<br>
-										> PLEASE STAND BY...
+									<h2>We're undergoing maintenance to bring<br>you the best cosmic retreat experience.</h2>
+									<p class="pixel-text">
+										Estimated completion:<br>
+										When the embers settle just right.<br><br>
+										Check back soon — final calibration in progress.
 									</p>
+									<div style="margin-top: 2em;">
+										<a href="#" class="pixel-text" style="margin-right: 1em;">
+											<span aria-label="Accessibility">♿</span> Accessibility
+										</a>
+										<a href="#" class="pixel-text">
+											<span aria-label="Simplified View">📱</span> Simplified View
+										</a>
+									</div>
 								</div>
 							</section>
 						</div>
@@ -141,7 +141,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
-							<div id="copyright" style="font-family: monospace;">
+							<div id="copyright" style="font-family: 'Courier New', monospace;">
 								<span class="blink">>></span> &copy; The Lodge. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
 							</div>
 						</div>
