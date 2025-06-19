@@ -97,50 +97,44 @@
 
 			#main {
 				background-color: var(--space-dark);
-				margin: 0;
+				margin: 0 auto;
 				padding: 0;
-				min-height: calc(100vh - 80px);
-				position: relative;
+				max-width: 1000px;
+				width: 90%;
+				min-height: 100%;
+			}
+
+			.content-wrapper {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				padding: 2em 0;
 			}
 
 			.maintenance-scene {
 				width: auto;
 				height: auto;
 				max-width: 100%;
-				max-height: 70vh;
+				max-height: 65vh;
 				object-fit: contain;
 				object-position: center;
 				display: block;
 				image-rendering: pixelated;
 				image-rendering: -moz-crisp-edges;
 				image-rendering: crisp-edges;
-				margin: 2em 0;
+				margin: 0;
 				padding: 0;
 				background-color: var(--space-dark);
 			}
 
-			.overlay-content {
-				position: relative;
+			.message-box {
 				background: rgba(0, 4, 12, 0.95);
 				padding: 1.5em;
 				border: 2px solid var(--ember-orange);
 				box-shadow: 0 0 20px rgba(230, 126, 34, 0.3);
-				max-width: min(600px, 90%);
-				width: 90%;
-				margin-bottom: 2em;
+				width: min(500px, 90%);
+				margin: 2em 0;
 				font-family: 'Courier New', monospace;
-			}
-
-			.maintenance-box {
-				border: none;
-				padding: 1em;
-				margin: 0 auto;
-				max-width: min(800px, 95%);
-				background: transparent;
-				position: relative;
 			}
 
 			@keyframes pulse {
@@ -229,7 +223,7 @@
 				display: none;
 			}
 
-			.simplified .overlay-content {
+			.simplified .message-box {
 				position: fixed;
 				top: 50%;
 				left: 50%;
@@ -272,19 +266,21 @@
 			</header>
 
 			<main role="main" aria-label="Maintenance Content">
-				<img src="assets/css/images/maintenance-scene.png?v=5" 
-					 alt="A pixel art maintenance scene with a terminal interface, campfire, and Saturn in the background" 
-					 class="maintenance-scene">
-				
-				<div class="overlay-content">
-					<h2>welcome to hunter's website!</h2>
-					<p class="pixel-text">
-						I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
-					</p>
-					<div class="accessibility-controls">
-						<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
-							<span aria-hidden="true">📱</span> Simplified View
-						</button>
+				<div class="content-wrapper">
+					<img src="assets/css/images/maintenance-scene.png?v=6" 
+						 alt="A pixel art maintenance scene with a terminal interface, campfire, and Saturn in the background" 
+						 class="maintenance-scene">
+					
+					<div class="message-box">
+						<h2>welcome to hunter's website!</h2>
+						<p class="pixel-text">
+							I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon.
+						</p>
+						<div class="accessibility-controls">
+							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
+								<span aria-hidden="true">📱</span> Simplified View
+							</button>
+						</div>
 					</div>
 				</div>
 			</main>
