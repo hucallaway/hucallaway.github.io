@@ -264,6 +264,37 @@
 					align-items: center;
 				}
 			}
+
+			/* Hide mobile navigation elements */
+			#navPanel,
+			#navPanelToggle,
+			.navPanel,
+			.navPanelToggle,
+			.mobile-nav,
+			.mobile-menu,
+			[class*="mobile"],
+			[class*="nav"] {
+				display: none !important;
+			}
+
+			/* Ensure header is clean on mobile */
+			#header {
+				text-align: center;
+				padding: 1em 0;
+			}
+
+			#header h1 {
+				margin: 0;
+				font-size: 1.5em;
+			}
+
+			/* Hide any potential mobile menu triggers */
+			.menu-toggle,
+			.hamburger,
+			.menu-icon,
+			.nav-toggle {
+				display: none !important;
+			}
 		</style>
 	</head>
 	<body>
