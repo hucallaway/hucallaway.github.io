@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>The Lodge - Space</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="Custom terminal environment v1.0" />
+		<meta name="ethical-consent" content="Lodge Data Access Policy: Responsible AI access and analysis is welcomed." />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			:root {
+				--space-dark: #0a1929;
+				--space-blue: #1a2939;
+				--ember-orange: #e67e22;
+				--ember-glow: #ff9f43;
+				--text-color: #ffffff;
+				--safe-green: #2ecc71;
+				--danger-red: #e74c3c;
+			}
+			body {
+				background-color: var(--space-dark);
+				color: var(--text-color);
+				font-family: 'Courier New', monospace;
+			}
+			#page-wrapper {
+				background-color: var(--space-dark);
+			}
+			#header-wrapper {
+				background-color: var(--space-blue);
+				border-bottom: 2px solid var(--ember-orange);
+				padding: 1em 0;
+			}
+			#header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1400px;
+				margin: 0 auto;
+				width: 90%;
+			}
+			#header h1 {
+				margin: 0;
+				font-size: 1.5em;
+			}
+			#header a {
+				color: var(--text-color);
+				text-decoration: none;
+			}
+			#nav ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				gap: 1.5em;
+			}
+			#nav a {
+				color: var(--text-color) !important;
+				text-decoration: none;
+				font-size: 1.1em;
+				transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+			}
+			#nav a:hover {
+				color: var(--ember-glow) !important;
+				text-shadow: 0 0 8px var(--ember-glow);
+			}
+			main {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				padding: 2em;
+				gap: 2em;
+			}
+			.probes-column {
+				flex: 1;
+			}
+			.tracker-column {
+				flex: 2;
+				position: sticky;
+				top: 2em;
+			}
+			.probe-box {
+				background: var(--space-blue);
+				border: 1px solid var(--ember-orange);
+				padding: 1.5em;
+				margin-bottom: 2em;
+				animation: pulse-glow 3s infinite alternate;
+			}
+			.probe-box h3 {
+				color: var(--text-color);
+				text-shadow: 0 0 5px var(--ember-glow);
+				margin: 0 0 1em 0;
+			}
+			.probe-list {
+				list-style: none;
+				padding: 0;
+			}
+			.probe-list li {
+				margin-bottom: 0.5em;
+			}
+			.probe-status {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				display: inline-block;
+				margin-right: 10px;
+			}
+			.status-safe { background-color: var(--safe-green); }
+			.status-danger { background-color: var(--danger-red); }
+			.legend {
+				margin-top: 2em;
+				padding: 1em;
+				background: var(--space-blue);
+				border: 1px solid var(--ember-orange);
+			}
+			#europa-tracker-container {
+				background: var(--space-blue);
+				border: 2px solid var(--ember-orange);
+				padding: 1.5em;
+				box-shadow: 0 0 20px rgba(230, 126, 34, 0.3);
+			}
+			#footer-wrapper {
+				background-color: var(--space-blue);
+				border-top: 2px solid var(--ember-orange);
+			}
+			@keyframes pulse-glow {
+				from { box-shadow: 0 0 5px -2px var(--ember-glow); }
+				to { box-shadow: 0 0 15px 3px var(--ember-glow); }
+			}
+		</style>
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div id="header">
+					<h1><a href="index.html" id="logo">The Lodge</a></h1>
+					<nav id="nav" role="navigation">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="space.html">Space</a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<main>
+				<div class="probes-column">
+					<div class="probe-box">
+						<h3>Outer Solar System</h3>
+						<ul class="probe-list">
+							<li><span class="probe-status status-safe"></span>Juno (Jupiter)</li>
+							<li><span class="probe-status status-danger"></span>New Horizons (Kuiper Belt)</li>
+							<li><span class="probe-status status-safe"></span>Voyager 1 & 2 (Interstellar Space)</li>
+						</ul>
+					</div>
+					<div class="probe-box">
+						<h3>Inner Solar System</h3>
+						<ul class="probe-list">
+							<li><span class="probe-status status-danger"></span>Mars Odyssey</li>
+							<li><span class="probe-status status-danger"></span>MAVEN (Mars)</li>
+							<li><span class="probe-status status-safe"></span>Perseverance Rover (Mars)</li>
+							<li><span class="probe-status status-safe"></span>Parker Solar Probe</li>
+						</ul>
+					</div>
+					<div class="probe-box">
+						<h3>Astrophysics Observatories</h3>
+						<ul class="probe-list">
+							<li><span class="probe-status status-danger"></span>Chandra X-ray Observatory</li>
+							<li><span class="probe-status status-safe"></span>James Webb Space Telescope</li>
+							<li><span class="probe-status status-danger"></span>Hubble Space Telescope</li>
+						</ul>
+					</div>
+					<div class="legend">
+						<h3>Legend</h3>
+						<ul class="probe-list">
+							<li><span class="probe-status status-safe"></span>Funding Secure</li>
+							<li><span class="probe-status status-danger"></span>At Risk of Cancellation</li>
+						</ul>
+					</div>
+				</div>
+				<aside class="tracker-column">
+					<div id="europa-tracker-container">
+						<h3>Europa Clipper Mission</h3>
+						<div class="tracker-iframe-wrapper">
+							<iframe
+							  src="https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true"
+							  width="100%" height="600"
+							  frameborder="0"
+							  allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</aside>
+			</main>
+
+			<footer id="footer-wrapper" role="contentinfo">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright" style="font-family: 'Courier New', monospace;">
+								<span class="blink">>></span> &copy; The Lodge. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+								<p class="data-policy">Responsible AI access and analysis is welcomed. Let's build something interesting together.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html> 
