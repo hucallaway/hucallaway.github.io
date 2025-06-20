@@ -193,6 +193,7 @@
 			}
 			.status-active { background-color: var(--safe-green); }
 			.status-mission { background-color: var(--ember-orange); }
+			.status-danger { background-color: var(--danger-red); }
 			.legend {
 				margin-top: 2em;
 				padding: 1em;
@@ -228,9 +229,13 @@
 				font-family: 'Courier New', monospace;
 				z-index: 10;
 				transition: background-color 0.2s ease-in-out;
+				font-size: 12px;
 			}
 			.fullscreen-btn:hover {
 				background: var(--ember-glow);
+			}
+			.fullscreen-btn:active {
+				transform: scale(0.95);
 			}
 			#footer-wrapper {
 				background-color: var(--space-blue);
@@ -272,12 +277,13 @@
 						</ul>
 					</div>
 					<div class="probe-box">
-						<h3>Historic Missions</h3>
+						<h3>Missions at Risk</h3>
 						<ul class="probe-list">
-							<li data-mission="voyager_1"><span class="probe-status status-mission"></span>Voyager 1</li>
-							<li data-mission="voyager_2"><span class="probe-status status-mission"></span>Voyager 2</li>
-							<li data-mission="new_horizons"><span class="probe-status status-mission"></span>New Horizons</li>
-							<li data-mission="cassini"><span class="probe-status status-mission"></span>Cassini</li>
+							<li data-mission="chandra"><span class="probe-status status-danger"></span>Chandra X-ray Observatory</li>
+							<li data-mission="hubble"><span class="probe-status status-danger"></span>Hubble Space Telescope</li>
+							<li data-mission="roman"><span class="probe-status status-danger"></span>Roman Space Telescope</li>
+							<li data-mission="veritas"><span class="probe-status status-danger"></span>VERITAS (Venus Mission)</li>
+							<li data-mission="davinci"><span class="probe-status status-danger"></span>DAVINCI+ (Venus Mission)</li>
 						</ul>
 					</div>
 					<div class="probe-box">
@@ -291,6 +297,7 @@
 						<h3>Legend</h3>
 						<ul class="probe-list">
 							<li><span class="probe-status status-active"></span>Currently Active</li>
+							<li><span class="probe-status status-danger"></span>At Risk of Cancellation</li>
 							<li><span class="probe-status status-mission"></span>Historic Mission</li>
 						</ul>
 						<p style="font-size: 0.9em; margin-top: 1em; color: #ccc;">
@@ -341,16 +348,21 @@
 			// Mission mapping for Eyes on the Solar System
 			const missionUrls = {
 				'europa_clipper': 'https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true',
-				'james_webb': 'https://eyes.nasa.gov/apps/solar-system/#/sc_james_webb?embed=true',
+				'james_webb': 'https://eyes.nasa.gov/apps/solar-system/#/sc_jwst?embed=true',
 				'perseverance': 'https://eyes.nasa.gov/apps/solar-system/#/sc_perseverance?embed=true',
 				'parker_solar_probe': 'https://eyes.nasa.gov/apps/solar-system/#/sc_parker_solar_probe?embed=true',
 				'juno': 'https://eyes.nasa.gov/apps/solar-system/#/sc_juno?embed=true',
 				'voyager_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_voyager_1?embed=true',
-				'voyager_2': 'https://eyes.gov/apps/solar-system/#/sc_voyager_2?embed=true',
+				'voyager_2': 'https://eyes.nasa.gov/apps/solar-system/#/sc_voyager_2?embed=true',
 				'new_horizons': 'https://eyes.nasa.gov/apps/solar-system/#/sc_new_horizons?embed=true',
 				'cassini': 'https://eyes.nasa.gov/apps/solar-system/#/sc_cassini?embed=true',
 				'iss': 'https://eyes.nasa.gov/apps/solar-system/#/sc_iss?embed=true',
-				'artemis_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_artemis_1?embed=true'
+				'artemis_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_artemis_1?embed=true',
+				'chandra': 'https://eyes.nasa.gov/apps/solar-system/#/sc_chandra?embed=true',
+				'hubble': 'https://eyes.nasa.gov/apps/solar-system/#/sc_hubble?embed=true',
+				'roman': 'https://eyes.nasa.gov/apps/solar-system/#/sc_roman?embed=true',
+				'veritas': 'https://eyes.nasa.gov/apps/solar-system/#/sc_veritas?embed=true',
+				'davinci': 'https://eyes.nasa.gov/apps/solar-system/#/sc_davinci?embed=true'
 			};
 
 			// Add click handlers to mission list items
@@ -365,26 +377,70 @@
 
 			// Fullscreen functionality
 			function toggleFullscreen() {
-				const container = document.getElementById('europa-tracker-container');
+				const iframe = document.getElementById('solar-system-viewer');
 				
-				if (!document.fullscreenElement) {
-					container.requestFullscreen().catch(err => {
-						console.log('Error attempting to enable fullscreen:', err);
-					});
+				// Check for fullscreen support
+				if (!document.fullscreenEnabled && 
+					!document.webkitFullscreenEnabled && 
+					!document.mozFullScreenEnabled && 
+					!document.msFullscreenEnabled) {
+					// Fallback: open in new tab
+					window.open(iframe.src, '_blank');
+					return;
+				}
+				
+				// Try to make iframe fullscreen
+				if (!document.fullscreenElement && 
+					!document.webkitFullscreenElement && 
+					!document.mozFullScreenElement && 
+					!document.msFullscreenElement) {
+					
+					const fullscreenPromise = iframe.requestFullscreen ? iframe.requestFullscreen() :
+											iframe.webkitRequestFullscreen ? iframe.webkitRequestFullscreen() :
+											iframe.mozRequestFullScreen ? iframe.mozRequestFullScreen() :
+											iframe.msRequestFullscreen ? iframe.msRequestFullscreen() : null;
+					
+					if (fullscreenPromise) {
+						fullscreenPromise.catch(err => {
+							console.log('Fullscreen failed, opening in new tab:', err);
+							window.open(iframe.src, '_blank');
+						});
+					} else {
+						// Fallback: open in new tab
+						window.open(iframe.src, '_blank');
+					}
 				} else {
-					document.exitFullscreen();
+					if (document.exitFullscreen) {
+						document.exitFullscreen();
+					} else if (document.webkitExitFullscreen) {
+						document.webkitExitFullscreen();
+					} else if (document.mozCancelFullScreen) {
+						document.mozCancelFullScreen();
+					} else if (document.msExitFullscreen) {
+						document.msExitFullscreen();
+					}
 				}
 			}
 
 			// Listen for fullscreen changes to update button text
-			document.addEventListener('fullscreenchange', () => {
+			document.addEventListener('fullscreenchange', updateFullscreenButton);
+			document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+			document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+			document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+			
+			function updateFullscreenButton() {
 				const btn = document.querySelector('.fullscreen-btn');
-				if (document.fullscreenElement) {
+				const isFullscreen = document.fullscreenElement || 
+								   document.webkitFullscreenElement || 
+								   document.mozFullScreenElement || 
+								   document.msFullscreenElement;
+				
+				if (isFullscreen) {
 					btn.textContent = '⛶ Exit Fullscreen';
 				} else {
 					btn.textContent = '⛶ Fullscreen';
 				}
-			});
+			}
 		</script>
 	</body>
 </html> 
