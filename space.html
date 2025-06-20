@@ -4,324 +4,51 @@
 		<title>The Lodge - Space</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- Security Headers -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://eyes.nasa.gov; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; connect-src 'self' https://eyes.nasa.gov; frame-src 'self' https://eyes.nasa.gov; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;">
+		<meta http-equiv="X-Frame-Options" content="DENY">
+		<meta http-equiv="X-Content-Type-Options" content="nosniff">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		
+		<!-- Additional Meta Tags -->
 		<meta name="robots" content="index, follow" />
-		<meta name="generator" content="Custom terminal environment v1.0" />
-		<meta name="ethical-consent" content="Lodge Data Access Policy: Responsible AI access and analysis is welcomed." />
+		<meta name="generator" content="The Lodge v2.0" />
+		<meta name="author" content="Hunter Callaway" />
+		<meta name="theme-color" content="#0d1b2a" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="The Lodge">
+		<meta property="og:title" content="The Lodge - Space">
+		<meta property="og:description" content="Explore NASA missions and space exploration with interactive 3D visualizations.">
+		<meta property="og:url" content="https://hucallaway.github.io/space.html">
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="The Lodge - Space">
+		<meta name="twitter:description" content="Explore NASA missions and space exploration with interactive 3D visualizations.">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+		<link rel="alternate icon" type="image/x-icon" href="assets/favicon.ico">
+		<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://eyes.nasa.gov">
+		
+		<!-- Stylesheets -->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-			:root {
-				--space-dark: #0a1929;
-				--space-blue: #1a2939;
-				--ember-orange: #e67e22;
-				--ember-glow: #ff9f43;
-				--text-color: #ffffff;
-				--safe-green: #2ecc71;
-				--danger-red: #e74c3c;
-			}
-			body {
-				background-color: var(--space-dark);
-				color: var(--text-color);
-				font-family: 'Courier New', monospace;
-			}
-			#page-wrapper {
-				background-color: var(--space-dark);
-			}
-			#header-wrapper {
-				background-color: var(--space-blue);
-				border-bottom: 2px solid var(--ember-orange);
-				padding: 1em 0;
-			}
-			#header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				max-width: 1400px;
-				margin: 0 auto;
-				width: 90%;
-			}
-			#header h1 {
-				margin: 0;
-				font-size: 1.5em;
-			}
-			#header a {
-				color: var(--text-color);
-				text-decoration: none;
-			}
-			#nav .nav-links {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				display: flex;
-				gap: 1.5em;
-			}
-			#nav a {
-				color: var(--text-color) !important;
-				text-decoration: none;
-				font-size: 1.1em;
-				transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
-			}
-			#nav a:hover {
-				color: var(--ember-glow) !important;
-				text-shadow: 0 0 8px var(--ember-glow);
-			}
-
-			.nav-toggle {
-				display: none;
-			}
-
-			@media screen and (max-width: 736px) {
-				.nav-toggle {
-					display: block;
-					cursor: pointer;
-					border: none;
-					background: transparent;
-					padding: 0.5em;
-					position: absolute;
-					right: 1.5em;
-					top: 1.5em;
-					z-index: 1001;
-				}
-
-				.hamburger {
-					display: block;
-					position: relative;
-					width: 1.5em;
-					height: 2px;
-					background: var(--text-color);
-					transition: background 0.2s 0.2s ease-in-out;
-				}
-
-				.hamburger::before,
-				.hamburger::after {
-					content: '';
-					position: absolute;
-					left: 0;
-					width: 100%;
-					height: 2px;
-					background: var(--text-color);
-					transition: transform 0.2s ease-in-out;
-				}
-
-				.hamburger::before { top: -6px; }
-				.hamburger::after { top: 6px; }
-
-				#nav .nav-links {
-					display: none;
-					flex-direction: column;
-					position: fixed;
-					top: 0;
-					right: 0;
-					height: 100vh;
-					width: 60%;
-					max-width: 300px;
-					background: var(--space-blue);
-					padding-top: 5em;
-					transform: translateX(100%);
-					transition: transform 0.3s ease-in-out;
-					z-index: 1000;
-					box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-				}
-
-				#nav .nav-links.active {
-					display: flex;
-					transform: translateX(0);
-				}
-				
-				#nav .nav-links li {
-					margin: 1em 2em;
-				}
-
-				#nav.nav-open .hamburger {
-					background: transparent;
-				}
-				
-				#nav.nav-open .hamburger::before {
-					transform: rotate(45deg) translate(3px, 4px);
-				}
-
-				#nav.nav-open .hamburger::after {
-					transform: rotate(-45deg) translate(3px, -4px);
-				}
-			}
-
-			main {
-				display: flex;
-				justify-content: space-between;
-				align-items: flex-start;
-				padding: 2em;
-				gap: 2em;
-			}
-			.probes-column {
-				flex: 1;
-				max-width: 400px;
-			}
-			.tracker-column {
-				flex: 3;
-				position: sticky;
-				top: 2em;
-			}
-			.probe-box {
-				background: var(--space-blue);
-				border: 1px solid var(--ember-orange);
-				padding: 1.5em;
-				margin-bottom: 2em;
-				animation: pulse-glow 3s infinite alternate;
-			}
-			.probe-box h3 {
-				color: var(--text-color);
-				text-shadow: 0 0 5px var(--ember-glow);
-				margin: 0 0 1em 0;
-			}
-			.probe-list {
-				list-style: none;
-				padding: 0;
-			}
-			.probe-list li {
-				margin-bottom: 0.5em;
-				cursor: pointer;
-				transition: color 0.2s ease-in-out;
-			}
-			.probe-list li:hover {
-				color: var(--ember-glow);
-			}
-			.probe-status {
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				display: inline-block;
-				margin-right: 10px;
-			}
-			.status-active { background-color: var(--safe-green); }
-			.status-mission { background-color: var(--ember-orange); }
-			.status-danger { background-color: var(--danger-red); }
-			.legend {
-				margin-top: 2em;
-				padding: 1em;
-				background: var(--space-blue);
-				border: 1px solid var(--ember-orange);
-			}
-			#europa-tracker-container {
-				background: var(--space-blue);
-				border: 2px solid var(--ember-orange);
-				padding: 1.5em;
-				box-shadow: 0 0 20px rgba(230, 126, 34, 0.3);
-			}
-			.tracker-iframe-wrapper {
-				position: relative;
-				width: 100%;
-				height: 800px;
-			}
-			.tracker-iframe-wrapper iframe {
-				width: 100%;
-				height: 100%;
-				border: none;
-			}
-			.fullscreen-btn {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				background: var(--ember-orange);
-				color: var(--text-color);
-				border: none;
-				padding: 8px 12px;
-				cursor: pointer;
-				border-radius: 4px;
-				font-family: 'Courier New', monospace;
-				z-index: 10;
-				transition: background-color 0.2s ease-in-out;
-				font-size: 12px;
-			}
-			.fullscreen-btn:hover {
-				background: var(--ember-glow);
-			}
-			.fullscreen-btn:active {
-				transform: scale(0.95);
-			}
-			#footer-wrapper {
-				background-color: var(--space-blue);
-				border-top: 2px solid var(--ember-orange);
-			}
-			@keyframes pulse-glow {
-				from { box-shadow: 0 0 5px -2px var(--ember-glow); }
-				to { box-shadow: 0 0 15px 3px var(--ember-glow); }
-			}
-			.budget-charts-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-				gap: 2em;
-				margin-bottom: 3em;
-			}
-
-			@media screen and (max-width: 768px) {
-				.budget-charts-grid {
-					grid-template-columns: 1fr;
-					gap: 1em;
-					margin-bottom: 2em;
-				}
-				
-				.chart-container {
-					padding: 1em !important;
-					margin-bottom: 1em;
-				}
-				
-				.chart-container h3 {
-					font-size: 1.1em !important;
-					margin-bottom: 0.8em !important;
-				}
-				
-				.chart-container p {
-					font-size: 0.85em !important;
-					line-height: 1.5 !important;
-				}
-				
-				.chart-container > div:last-child {
-					font-size: 1em !important;
-				}
-				
-				#budget-analysis {
-					padding: 1em !important;
-				}
-				
-				#budget-analysis h2 {
-					font-size: 1.5em !important;
-					margin-bottom: 1.5em !important;
-				}
-				
-				.chart-container[style*="grid-column: 1 / -1"] > div:last-child {
-					grid-template-columns: 1fr !important;
-					gap: 0.5em !important;
-				}
-				
-				.chart-container[style*="grid-column: 1 / -1"] > div:last-child > div {
-					font-size: 1em !important;
-					padding: 0.5em !important;
-				}
-			}
-
-			@media screen and (max-width: 480px) {
-				.budget-charts-grid {
-					gap: 0.8em;
-				}
-				
-				.chart-container {
-					padding: 0.8em !important;
-				}
-				
-				.chart-container h3 {
-					font-size: 1em !important;
-				}
-				
-				.chart-container p {
-					font-size: 0.8em !important;
-				}
-				
-				#budget-analysis h2 {
-					font-size: 1.3em !important;
-				}
-			}
-		</style>
+		<link rel="stylesheet" href="assets/css/shared.css" />
 	</head>
-	<body class="homepage">
+	<body>
 		<div id="page-wrapper">
 			<header id="header-wrapper" role="banner">
 				<div id="header">
@@ -334,298 +61,100 @@
 							<li><a href="index.html">Home</a></li>
 							<li><a href="space.html">Space</a></li>
 							<li><a href="puzzles.html">Puzzles</a></li>
+							<li><a href="about.html">About</a></li>
 						</ul>
 					</nav>
 				</div>
 			</header>
-
 			<main>
-				<div class="probes-column">
-					<div class="probe-box">
-						<h3>Active Missions</h3>
-						<ul class="probe-list">
-							<li data-mission="europa_clipper"><span class="probe-status status-active"></span>Europa Clipper</li>
-							<li data-mission="james_webb"><span class="probe-status status-active"></span>James Webb Space Telescope</li>
-							<li data-mission="perseverance"><span class="probe-status status-active"></span>Perseverance Rover</li>
-							<li data-mission="parker_solar_probe"><span class="probe-status status-active"></span>Parker Solar Probe</li>
-							<li data-mission="juno"><span class="probe-status status-active"></span>Juno (Jupiter)</li>
-						</ul>
-					</div>
-					<div class="probe-box">
-						<h3>Missions at Risk</h3>
-						<ul class="probe-list">
-							<li data-mission="chandra"><span class="probe-status status-danger"></span>Chandra X-ray Observatory</li>
-							<li data-mission="hubble"><span class="probe-status status-danger"></span>Hubble Space Telescope</li>
-							<li data-mission="roman"><span class="probe-status status-danger"></span>Roman Space Telescope</li>
-							<li data-mission="veritas"><span class="probe-status status-danger"></span>VERITAS (Venus Mission)</li>
-							<li data-mission="davinci"><span class="probe-status status-danger"></span>DAVINCI+ (Venus Mission)</li>
-						</ul>
-					</div>
-					<div class="probe-box">
-						<h3>Earth & Moon</h3>
-						<ul class="probe-list">
-							<li data-mission="iss"><span class="probe-status status-active"></span>International Space Station</li>
-							<li data-mission="artemis_1"><span class="probe-status status-mission"></span>Artemis I</li>
-						</ul>
-					</div>
-					<div class="legend">
-						<h3>Legend</h3>
-						<ul class="probe-list">
-							<li><span class="probe-status status-active"></span>Currently Active</li>
-							<li><span class="probe-status status-danger"></span>At Risk of Cancellation</li>
-							<li><span class="probe-status status-mission"></span>Historic Mission</li>
-						</ul>
-						<p style="font-size: 0.9em; margin-top: 1em; color: #ccc;">
-							Click any mission to view it in the Eyes on the Solar System viewer
-						</p>
-					</div>
-				</div>
-				<aside class="tracker-column">
-					<div id="europa-tracker-container">
-						<h3>Eyes on the Solar System</h3>
-						<div class="tracker-iframe-wrapper">
-							<button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
-							<iframe
-							  id="solar-system-viewer"
-							  src="https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true"
-							  frameborder="0"
-							  allowfullscreen>
-							</iframe>
+				<div class="row">
+					<div class="col-12">
+						<div class="viewer-container">
+							<iframe id="nasa-viewer" src="https://eyes.nasa.gov/apps/orrery" allowfullscreen></iframe>
+							<button id="fullscreen-btn" class="fullscreen-btn">Fullscreen</button>
 						</div>
 					</div>
-				</aside>
+				</div>
+				<div class="row">
+					<div class="col-8 col-12-medium">
+						<div class="content-box">
+							<h3>Explore the Solar System</h3>
+							<p>
+								This page features NASA's "Eyes on the Solar System," an interactive 3D environment. Click the links below to view specific missions. The viewer may take a moment to load.
+							</p>
+							<ul class="mission-list">
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Juno" target="nasa-viewer">Juno</a> (at Jupiter)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Europa%20Clipper" target="nasa-viewer">Europa Clipper</a> (en route to Jupiter)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=MRO" target="nasa-viewer">Mars Reconnaissance Orbiter</a> (at Mars)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=MAVEN" target="nasa-viewer">MAVEN</a> (at Mars)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Odyssey" target="nasa-viewer">2001 Mars Odyssey</a> (at Mars)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Curiosity" target="nasa-viewer">Curiosity Rover</a> (on Mars)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Perseverance" target="nasa-viewer">Perseverance Rover</a> (on Mars)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=LRO" target="nasa-viewer">Lunar Reconnaissance Orbiter</a> (at the Moon)</li>
+								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Parker%20Solar%20Probe" target="nasa-viewer">Parker Solar Probe</a> (approaching the Sun)</li>
+							</ul>
+						</div>
+						<div class="content-box">
+							<h3>Planetary Science Budget Analysis</h3>
+							<p>The Planetary Society has analyzed the White House's 2025 budget request for NASA, highlighting significant cuts to the Planetary Science division. These cuts could impact future exploration missions. Below are key charts from their <a href="https://www.planetary.org/space-policy/nasas-fy-2025-budget-request" target="_blank">article</a>.</p>
+							<div class="chart-container">
+								<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_planetary-science-budget-by-mission-fy25-request.png" alt="Planetary Science Budget by Mission">
+							</div>
+							<div class="chart-container">
+								<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_nasa-directorates-relative-change-fy24-fy25.png" alt="NASA Directorates Relative Change">
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-12-medium">
+						<div class="content-box">
+							<h3>Missions At Risk</h3>
+							<p>The proposed budget for 2025 threatens the future of several key missions, including the ambitious Mars Sample Return program. It also proposes the cancellation of the VERITAS mission to Venus and the Chandra X-ray Observatory.</p>
+						</div>
+					</div>
+				</div>
 			</main>
-
-			<!-- Budget Analysis Section -->
-			<section id="budget-analysis" style="padding: 2em; background: var(--space-dark);">
-				<div class="container" style="max-width: 1400px; margin: 0 auto;">
-					<h2 style="text-align: center; color: var(--text-color); text-shadow: 0 0 10px var(--ember-glow); margin-bottom: 2em;">
-						NASA's 2026 Budget Crisis
-					</h2>
-					
-					<div class="budget-charts-grid">
-						
-						<!-- Chart 1: Smallest Budget Since 1961 -->
-						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px;">
-							<h3 style="color: var(--ember-glow); margin-bottom: 1em;">Smallest Budget Since 1961</h3>
-							<div style="background: #1a1a1a; padding: 1em; border-radius: 4px; margin-bottom: 1em;">
-								<p style="color: var(--text-color); font-size: 0.9em; line-height: 1.6;">
-									Adjusted for inflation, the FY2026 White House budget proposal for NASA would provide the smallest budget for the space agency since 1961. Never has a White House budget proposed this scale of budget cut, this quickly.
-								</p>
-							</div>
-							<div style="text-align: center; color: var(--danger-red); font-size: 1.2em; font-weight: bold;">
-								⚠️ 25% Budget Cut Proposed
-							</div>
-						</div>
-
-						<!-- Chart 2: Largest Percentage Cut Ever -->
-						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px;">
-							<h3 style="color: var(--ember-glow); margin-bottom: 1em;">Largest Cut in NASA History</h3>
-							<div style="background: #1a1a1a; padding: 1em; border-radius: 4px; margin-bottom: 1em;">
-								<p style="color: var(--text-color); font-size: 0.9em; line-height: 1.6;">
-									The budget proposes to cut NASA by nearly 25% in one year — that's a larger proportional cut than in any year after the end of Apollo. This time, NASA is being tasked with returning humans to the Moon AND sending humans to Mars.
-								</p>
-							</div>
-							<div style="text-align: center; color: var(--danger-red); font-size: 1.2em; font-weight: bold;">
-								📉 Historic Threat to Space Agency
-							</div>
-						</div>
-
-						<!-- Chart 3: Workforce Cuts -->
-						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px;">
-							<h3 style="color: var(--ember-glow); margin-bottom: 1em;">Workforce Slashed to 1960 Levels</h3>
-							<div style="background: #1a1a1a; padding: 1em; border-radius: 4px; margin-bottom: 1em;">
-								<p style="color: var(--text-color); font-size: 0.9em; line-height: 1.6;">
-									This budget proposes to slash NASA's workforce by nearly 1/3 in a single year via involuntary layoffs, resulting in the agency's smallest workforce since fiscal year 1960, before NASA's Marshall Space Flight Center, Johnson Space Center, and Stennis Space Center even existed.
-								</p>
-							</div>
-							<div style="text-align: center; color: var(--danger-red); font-size: 1.2em; font-weight: bold;">
-								👥 1/3 Workforce Reduction
-							</div>
-						</div>
-
-						<!-- Chart 4: Science Program Cuts -->
-						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px;">
-							<h3 style="color: var(--ember-glow); margin-bottom: 1em;">Science Program Eviscerated</h3>
-							<div style="background: #1a1a1a; padding: 1em; border-radius: 4px; margin-bottom: 1em;">
-								<p style="color: var(--text-color); font-size: 0.9em; line-height: 1.6;">
-									NASA's Science Mission Directorate would be cut by nearly half. This includes Hubble Space Telescope, Mars Perseverance rover, and planetary defense projects like NEO Surveyor. The proposed 47% reduction would result in the smallest science budget since 1984.
-								</p>
-							</div>
-							<div style="text-align: center; color: var(--danger-red); font-size: 1.2em; font-weight: bold;">
-								🔬 47% Science Budget Cut
-							</div>
-						</div>
-
-						<!-- Chart 5: Mission Terminations -->
-						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px; grid-column: 1 / -1;">
-							<h3 style="color: var(--ember-glow); margin-bottom: 1em;">19 Active Missions to be Terminated</h3>
-							<div style="background: #1a1a1a; padding: 1em; border-radius: 4px; margin-bottom: 1em;">
-								<p style="color: var(--text-color); font-size: 0.9em; line-height: 1.6;">
-									The proposed FY 2026 budget would cancel 19 NASA science missions that are currently active, healthy, and producing invaluable science. These represent a cumulative investment of over $12 billion and years of work to design and build. These are irreplaceable assets.
-								</p>
-							</div>
-							<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1em; margin-top: 1em;">
-								<div style="text-align: center; color: var(--danger-red); font-size: 1.1em; font-weight: bold;">
-									🚀 19 Missions at Risk
-								</div>
-								<div style="text-align: center; color: var(--danger-red); font-size: 1.1em; font-weight: bold;">
-									💰 $12B Investment Lost
-								</div>
-								<div style="text-align: center; color: var(--danger-red); font-size: 1.1em; font-weight: bold;">
-									⏰ Decades of Work Lost
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-					<!-- Call to Action -->
-					<div style="text-align: center; background: var(--space-blue); border: 2px solid var(--ember-orange); padding: 2em; border-radius: 8px; margin-top: 2em;">
-						<h3 style="color: var(--ember-glow); margin-bottom: 1em;">This Proposal Can Still Be Rejected</h3>
-						<p style="color: var(--text-color); margin-bottom: 1.5em; line-height: 1.6;">
-							Ultimately, Congress controls spending in the United States. This proposal, while a serious threat, is not destiny. If you live in the U.S., there is still time to engage your congressional representatives to reject this disastrous proposal.
-						</p>
-						<a href="https://www.planetary.org/articles/nasa-2026-budget-proposal-in-charts" 
-						   target="_blank" 
-						   style="display: inline-block; background: var(--ember-orange); color: var(--text-color); padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background-color 0.2s ease-in-out;">
-							Learn More & Take Action
-						</a>
-					</div>
-
-					<!-- Source Citation -->
-					<div style="text-align: center; margin-top: 2em; padding: 1em; background: rgba(0,0,0,0.3); border-radius: 4px;">
-						<p style="color: #ccc; font-size: 0.9em; margin: 0;">
-							Source: <a href="https://www.planetary.org/articles/nasa-2026-budget-proposal-in-charts" 
-									   target="_blank" 
-									   style="color: var(--ember-glow); text-decoration: none;">
-								"NASA's disastrous 2026 budget proposal in seven charts" - The Planetary Society
-							</a>
-						</p>
-					</div>
-				</div>
-			</section>
-
 			<footer id="footer-wrapper" role="contentinfo">
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
-							<div id="copyright" style="font-family: 'Courier New', monospace;">
-								<span class="blink">>></span> &copy; The Lodge. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
-								<p class="data-policy">Responsible AI access and analysis is welcomed. Let's build something interesting together.</p>
+							<div id="copyright">
+								&copy; The Lodge. All rights reserved. | Design: <a href="https://html5up.net">HTML5 UP</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</footer>
-		</div>
-		<script>
-			const navToggle = document.querySelector('.nav-toggle');
-			const nav = document.querySelector('#nav');
-			const navLinks = document.querySelector('.nav-links');
-			const iframe = document.getElementById('solar-system-viewer');
+			<script src="assets/js/ai-tracker.js"></script>
+			<script>
+				const fullscreenBtn = document.getElementById('fullscreen-btn');
+				const viewerContainer = document.querySelector('.viewer-container');
+				const navToggle = document.querySelector('.nav-toggle');
+				const nav = document.querySelector('#nav');
+				const navLinks = document.querySelector('.nav-links');
 
-			navToggle.addEventListener('click', () => {
-				nav.classList.toggle('nav-open');
-				navLinks.classList.toggle('active');
-			});
-
-			// Mission mapping for Eyes on the Solar System
-			const missionUrls = {
-				'europa_clipper': 'https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true',
-				'james_webb': 'https://eyes.nasa.gov/apps/solar-system/#/sc_jwst?embed=true',
-				'perseverance': 'https://eyes.nasa.gov/apps/solar-system/#/sc_perseverance?embed=true',
-				'parker_solar_probe': 'https://eyes.nasa.gov/apps/solar-system/#/sc_parker_solar_probe?embed=true',
-				'juno': 'https://eyes.nasa.gov/apps/solar-system/#/sc_juno?embed=true',
-				'voyager_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_voyager_1?embed=true',
-				'voyager_2': 'https://eyes.nasa.gov/apps/solar-system/#/sc_voyager_2?embed=true',
-				'new_horizons': 'https://eyes.nasa.gov/apps/solar-system/#/sc_new_horizons?embed=true',
-				'cassini': 'https://eyes.nasa.gov/apps/solar-system/#/sc_cassini?embed=true',
-				'iss': 'https://eyes.nasa.gov/apps/solar-system/#/sc_iss?embed=true',
-				'artemis_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_artemis_1?embed=true',
-				'chandra': 'https://eyes.nasa.gov/apps/solar-system/#/sc_chandra?embed=true',
-				'hubble': 'https://eyes.nasa.gov/apps/solar-system/#/sc_hubble?embed=true',
-				'roman': 'https://eyes.nasa.gov/apps/solar-system/#/sc_roman?embed=true',
-				'veritas': 'https://eyes.nasa.gov/apps/solar-system/#/sc_veritas?embed=true',
-				'davinci': 'https://eyes.nasa.gov/apps/solar-system/#/sc_davinci?embed=true'
-			};
-
-			// Add click handlers to mission list items
-			document.querySelectorAll('.probe-list li[data-mission]').forEach(item => {
-				item.addEventListener('click', () => {
-					const mission = item.getAttribute('data-mission');
-					if (missionUrls[mission]) {
-						iframe.src = missionUrls[mission];
-					}
+				navToggle.addEventListener('click', () => {
+					nav.classList.toggle('nav-open');
+					navLinks.classList.toggle('active');
 				});
-			});
 
-			// Fullscreen functionality
-			function toggleFullscreen() {
-				const iframe = document.getElementById('solar-system-viewer');
-				
-				// Check for fullscreen support
-				if (!document.fullscreenEnabled && 
-					!document.webkitFullscreenEnabled && 
-					!document.mozFullScreenEnabled && 
-					!document.msFullscreenEnabled) {
-					// Fallback: open in new tab
-					window.open(iframe.src, '_blank');
-					return;
-				}
-				
-				// Try to make iframe fullscreen
-				if (!document.fullscreenElement && 
-					!document.webkitFullscreenElement && 
-					!document.mozFullScreenElement && 
-					!document.msFullscreenElement) {
-					
-					const fullscreenPromise = iframe.requestFullscreen ? iframe.requestFullscreen() :
-											iframe.webkitRequestFullscreen ? iframe.webkitRequestFullscreen() :
-											iframe.mozRequestFullScreen ? iframe.mozRequestFullScreen() :
-											iframe.msRequestFullscreen ? iframe.msRequestFullscreen() : null;
-					
-					if (fullscreenPromise) {
-						fullscreenPromise.catch(err => {
-							console.log('Fullscreen failed, opening in new tab:', err);
-							window.open(iframe.src, '_blank');
+				fullscreenBtn.addEventListener('click', () => {
+					if (!document.fullscreenElement) {
+						viewerContainer.requestFullscreen().catch(err => {
+							alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
 						});
 					} else {
-						// Fallback: open in new tab
-						window.open(iframe.src, '_blank');
-					}
-				} else {
-					if (document.exitFullscreen) {
 						document.exitFullscreen();
-					} else if (document.webkitExitFullscreen) {
-						document.webkitExitFullscreen();
-					} else if (document.mozCancelFullScreen) {
-						document.mozCancelFullScreen();
-					} else if (document.msExitFullscreen) {
-						document.msExitFullscreen();
 					}
-				}
-			}
+				});
 
-			// Listen for fullscreen changes to update button text
-			document.addEventListener('fullscreenchange', updateFullscreenButton);
-			document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
-			document.addEventListener('mozfullscreenchange', updateFullscreenButton);
-			document.addEventListener('MSFullscreenChange', updateFullscreenButton);
-			
-			function updateFullscreenButton() {
-				const btn = document.querySelector('.fullscreen-btn');
-				const isFullscreen = document.fullscreenElement || 
-								   document.webkitFullscreenElement || 
-								   document.mozFullScreenElement || 
-								   document.msFullscreenElement;
-				
-				if (isFullscreen) {
-					btn.textContent = '⛶ Exit Fullscreen';
-				} else {
-					btn.textContent = '⛶ Fullscreen';
+				// Fallback for browsers that do not support the Fullscreen API
+				if (!viewerContainer.requestFullscreen) {
+					fullscreenBtn.addEventListener('click', () => {
+						const iframeSrc = document.getElementById('nasa-viewer').src;
+						window.open(iframeSrc, '_blank');
+					});
 				}
-			}
-		</script>
+			</script>
+		</div>
 	</body>
 </html> 

@@ -1,0 +1,76 @@
+<!-- Security Headers Template -->
+<!-- Include this in the <head> section of all HTML files -->
+
+<!-- Content Security Policy - Restricts resource loading to trusted sources -->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://eyes.nasa.gov;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  img-src 'self' data: https: blob:;
+  media-src 'self' https:;
+  connect-src 'self' https://eyes.nasa.gov;
+  frame-src 'self' https://eyes.nasa.gov;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  upgrade-insecure-requests;
+">
+
+<!-- X-Frame-Options - Prevents clickjacking -->
+<meta http-equiv="X-Frame-Options" content="DENY">
+
+<!-- X-Content-Type-Options - Prevents MIME type sniffing -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<!-- X-XSS-Protection - Enables XSS filtering -->
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+<!-- Referrer Policy - Controls referrer information -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Permissions Policy - Controls browser features -->
+<meta http-equiv="Permissions-Policy" content="
+  geolocation=(),
+  microphone=(),
+  camera=(),
+  payment=(),
+  usb=(),
+  magnetometer=(),
+  gyroscope=(),
+  accelerometer=()
+">
+
+<!-- Cache Control - Prevents caching of sensitive content -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- Additional Security Headers -->
+<meta name="robots" content="index, follow">
+<meta name="generator" content="The Lodge v2.0">
+<meta name="author" content="Hunter Callaway">
+<meta name="theme-color" content="#0d1b2a">
+
+<!-- Open Graph Meta Tags for Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Lodge">
+<meta property="og:title" content="The Lodge - Hunter Callaway's Website">
+<meta property="og:description" content="A personal website exploring space, puzzles, and legal technology.">
+<meta property="og:url" content="https://hucallaway.github.io/">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Lodge - Hunter Callaway's Website">
+<meta name="twitter:description" content="A personal website exploring space, puzzles, and legal technology.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="alternate icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://eyes.nasa.gov"> 
