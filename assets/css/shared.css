@@ -14,9 +14,9 @@
 
 /* Base Styles */
 body {
-	background-color: var(--space-dark);
-	color: var(--text-color);
-	font-family: 'Courier New', monospace;
+	background-color: var(--space-dark) !important;
+	color: var(--text-color) !important;
+	font-family: 'Courier New', monospace !important;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
@@ -30,8 +30,8 @@ body {
 
 /* Header Styles */
 #header-wrapper {
-	background-color: var(--space-blue);
-	border-bottom: 2px solid var(--ember-orange);
+	background-color: var(--space-blue) !important;
+	border-bottom: 2px solid var(--ember-orange) !important;
 	padding: 1em 0;
 	position: sticky;
 	top: 0;
@@ -53,7 +53,7 @@ body {
 }
 
 #header h1 a {
-	color: var(--text-color);
+	color: var(--text-color) !important;
 	text-decoration: none;
 }
 
@@ -66,9 +66,10 @@ body {
 	gap: 1.5em;
 }
 
+/* Navigation Link Overrides */
 #nav a {
 	color: var(--text-color) !important;
-	text-decoration: none;
+	text-decoration: none !important;
 	font-size: 1.1em;
 	transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
 }
@@ -162,8 +163,8 @@ main {
 
 /* Footer Styles */
 #footer-wrapper {
-	background-color: var(--space-blue);
-	border-top: 2px solid var(--ember-orange);
+	background-color: var(--space-blue) !important;
+	border-top: 2px solid var(--ember-orange) !important;
 	padding: 2em 0;
 	margin-top: 2em;
 }
@@ -1099,5 +1100,132 @@ a:hover {
 	
 	.private-access-container {
 		padding: 1em;
+	}
+} 
+
+/* Mission Tabs */
+.mission-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	margin: 1em 0;
+}
+
+.mission-tab {
+	background: var(--space-blue);
+	border: 1px solid var(--ember-orange);
+	color: var(--text-color);
+	padding: 0.5em 1em;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	font-family: 'Courier New', monospace;
+	font-size: 0.9em;
+}
+
+.mission-tab:hover {
+	background: var(--ember-orange);
+	color: var(--space-dark);
+	box-shadow: 0 0 10px var(--ember-glow);
+}
+
+.mission-tab.active {
+	background: var(--ember-orange);
+	color: var(--space-dark);
+	box-shadow: 0 0 15px var(--ember-glow);
+}
+
+/* News Section */
+.news-section {
+	margin-top: 1em;
+}
+
+.news-item {
+	border-left: 3px solid var(--ember-orange);
+	padding-left: 1em;
+	margin-bottom: 1.5em;
+}
+
+.news-item h4 {
+	color: var(--ember-orange);
+	margin-bottom: 0.5em;
+}
+
+/* Mission Info Cards */
+.mission-info {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.mission-card {
+	background: var(--space-blue);
+	border: 1px solid var(--ember-orange);
+	padding: 1em;
+	border-radius: 4px;
+	transition: all 0.2s ease-in-out;
+}
+
+.mission-card:hover {
+	box-shadow: 0 0 10px var(--ember-glow);
+	transform: translateY(-2px);
+}
+
+.mission-card h4 {
+	color: var(--ember-orange);
+	margin-bottom: 0.5em;
+	font-size: 1.1em;
+}
+
+.mission-card p {
+	margin: 0;
+	font-size: 0.9em;
+	line-height: 1.4;
+}
+
+/* Responsive Design for Mission Tabs */
+@media (max-width: 768px) {
+	.mission-tabs {
+		flex-direction: column;
+	}
+	
+	.mission-tab {
+		text-align: center;
+	}
+	
+	.mission-info {
+		gap: 0.5em;
+	}
+} 
+
+/* Grid System Overrides */
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -1em;
+}
+
+.row > * {
+	padding: 0 1em;
+	box-sizing: border-box;
+}
+
+.col-12 { width: 100%; }
+.col-8 { width: 66.66667%; }
+.col-4 { width: 33.33333%; }
+
+@media screen and (max-width: 980px) {
+	.col-12-medium { width: 100%; }
+	.col-8-medium { width: 100%; }
+	.col-4-medium { width: 100%; }
+}
+
+@media screen and (max-width: 736px) {
+	.row {
+		flex-direction: column;
+	}
+	
+	.row > * {
+		width: 100% !important;
+		margin-bottom: 1em;
 	}
 } 

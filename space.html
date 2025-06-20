@@ -70,7 +70,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="viewer-container">
-							<iframe id="nasa-viewer" src="https://eyes.nasa.gov/apps/orrery" allowfullscreen></iframe>
+							<iframe id="nasa-viewer" name="nasa-viewer" src="https://eyes.nasa.gov/apps/orrery" allowfullscreen></iframe>
 							<button id="fullscreen-btn" class="fullscreen-btn">Fullscreen</button>
 						</div>
 					</div>
@@ -78,30 +78,35 @@
 				<div class="row">
 					<div class="col-8 col-12-medium">
 						<div class="content-box">
-							<h3>Explore the Solar System</h3>
+							<h3>Mission Explorer</h3>
 							<p>
-								This page features NASA's "Eyes on the Solar System," an interactive 3D environment. Click the links below to view specific missions. The viewer may take a moment to load.
+								This page features NASA's "Eyes on the Solar System," an interactive 3D environment. Click the mission tabs below to view specific spacecraft and missions. The viewer may take a moment to load.
 							</p>
-							<ul class="mission-list">
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Juno" target="nasa-viewer">Juno</a> (at Jupiter)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Europa%20Clipper" target="nasa-viewer">Europa Clipper</a> (en route to Jupiter)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=MRO" target="nasa-viewer">Mars Reconnaissance Orbiter</a> (at Mars)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=MAVEN" target="nasa-viewer">MAVEN</a> (at Mars)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Odyssey" target="nasa-viewer">2001 Mars Odyssey</a> (at Mars)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Curiosity" target="nasa-viewer">Curiosity Rover</a> (on Mars)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Perseverance" target="nasa-viewer">Perseverance Rover</a> (on Mars)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=LRO" target="nasa-viewer">Lunar Reconnaissance Orbiter</a> (at the Moon)</li>
-								<li><a href="https://eyes.nasa.gov/apps/orrery/?target=Parker%20Solar%20Probe" target="nasa-viewer">Parker Solar Probe</a> (approaching the Sun)</li>
-							</ul>
+							<div class="mission-tabs">
+								<button class="mission-tab active" data-target="https://eyes.nasa.gov/apps/orrery">Solar System Overview</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=Juno">Juno (Jupiter)</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=Europa%20Clipper">Europa Clipper</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=MRO">Mars Reconnaissance Orbiter</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=MAVEN">MAVEN (Mars)</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=Curiosity">Curiosity Rover</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=Perseverance">Perseverance Rover</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=LRO">Lunar Reconnaissance Orbiter</button>
+								<button class="mission-tab" data-target="https://eyes.nasa.gov/apps/orrery/?target=Parker%20Solar%20Probe">Parker Solar Probe</button>
+							</div>
 						</div>
 						<div class="content-box">
-							<h3>Planetary Science Budget Analysis</h3>
-							<p>The Planetary Society has analyzed the White House's 2025 budget request for NASA, highlighting significant cuts to the Planetary Science division. These cuts could impact future exploration missions. Below are key charts from their <a href="https://www.planetary.org/space-policy/nasas-fy-2025-budget-request" target="_blank">article</a>.</p>
-							<div class="chart-container">
-								<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_planetary-science-budget-by-mission-fy25-request.png" alt="Planetary Science Budget by Mission">
-							</div>
-							<div class="chart-container">
-								<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_nasa-directorates-relative-change-fy24-fy25.png" alt="NASA Directorates Relative Change">
+							<h3>Latest Space News</h3>
+							<div class="news-section">
+								<article class="news-item">
+									<h4>Planetary Science Budget Analysis</h4>
+									<p>The Planetary Society has analyzed the White House's 2025 budget request for NASA, highlighting significant cuts to the Planetary Science division. These cuts could impact future exploration missions. Below are key charts from their <a href="https://www.planetary.org/space-policy/nasas-fy-2025-budget-request" target="_blank">article</a>.</p>
+									<div class="chart-container">
+										<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_planetary-science-budget-by-mission-fy25-request.png" alt="Planetary Science Budget by Mission">
+									</div>
+									<div class="chart-container">
+										<img src="https://www.planetary.org/s3/planetary/assets/images/charts-graphs/20240311_nasa-directorates-relative-change-fy24-fy25.png" alt="NASA Directorates Relative Change">
+									</div>
+								</article>
 							</div>
 						</div>
 					</div>
@@ -109,6 +114,23 @@
 						<div class="content-box">
 							<h3>Missions At Risk</h3>
 							<p>The proposed budget for 2025 threatens the future of several key missions, including the ambitious Mars Sample Return program. It also proposes the cancellation of the VERITAS mission to Venus and the Chandra X-ray Observatory.</p>
+						</div>
+						<div class="content-box">
+							<h3>Quick Mission Info</h3>
+							<div class="mission-info">
+								<div class="mission-card">
+									<h4>Juno</h4>
+									<p>Studying Jupiter's atmosphere and magnetic field since 2016</p>
+								</div>
+								<div class="mission-card">
+									<h4>Europa Clipper</h4>
+									<p>Launching 2024 to study Jupiter's moon Europa</p>
+								</div>
+								<div class="mission-card">
+									<h4>Perseverance</h4>
+									<p>Searching for signs of ancient life on Mars</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -131,12 +153,29 @@
 				const navToggle = document.querySelector('.nav-toggle');
 				const nav = document.querySelector('#nav');
 				const navLinks = document.querySelector('.nav-links');
+				const missionTabs = document.querySelectorAll('.mission-tab');
+				const nasaViewer = document.getElementById('nasa-viewer');
 
+				// Mobile Navigation Toggle
 				navToggle.addEventListener('click', () => {
 					nav.classList.toggle('nav-open');
 					navLinks.classList.toggle('active');
 				});
 
+				// Mission Tab Functionality
+				missionTabs.forEach(tab => {
+					tab.addEventListener('click', () => {
+						// Remove active class from all tabs
+						missionTabs.forEach(t => t.classList.remove('active'));
+						// Add active class to clicked tab
+						tab.classList.add('active');
+						// Update iframe source
+						const targetUrl = tab.getAttribute('data-target');
+						nasaViewer.src = targetUrl;
+					});
+				});
+
+				// Fullscreen Functionality
 				fullscreenBtn.addEventListener('click', () => {
 					if (!document.fullscreenElement) {
 						viewerContainer.requestFullscreen().catch(err => {
@@ -150,7 +189,7 @@
 				// Fallback for browsers that do not support the Fullscreen API
 				if (!viewerContainer.requestFullscreen) {
 					fullscreenBtn.addEventListener('click', () => {
-						const iframeSrc = document.getElementById('nasa-viewer').src;
+						const iframeSrc = nasaViewer.src;
 						window.open(iframeSrc, '_blank');
 					});
 				}
