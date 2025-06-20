@@ -153,9 +153,10 @@
 			}
 			.probes-column {
 				flex: 1;
+				max-width: 400px;
 			}
 			.tracker-column {
-				flex: 2;
+				flex: 3;
 				position: sticky;
 				top: 2em;
 			}
@@ -177,6 +178,11 @@
 			}
 			.probe-list li {
 				margin-bottom: 0.5em;
+				cursor: pointer;
+				transition: color 0.2s ease-in-out;
+			}
+			.probe-list li:hover {
+				color: var(--ember-glow);
 			}
 			.probe-status {
 				width: 10px;
@@ -185,8 +191,8 @@
 				display: inline-block;
 				margin-right: 10px;
 			}
-			.status-safe { background-color: var(--safe-green); }
-			.status-danger { background-color: var(--danger-red); }
+			.status-active { background-color: var(--safe-green); }
+			.status-mission { background-color: var(--ember-orange); }
 			.legend {
 				margin-top: 2em;
 				padding: 1em;
@@ -198,6 +204,33 @@
 				border: 2px solid var(--ember-orange);
 				padding: 1.5em;
 				box-shadow: 0 0 20px rgba(230, 126, 34, 0.3);
+			}
+			.tracker-iframe-wrapper {
+				position: relative;
+				width: 100%;
+				height: 800px;
+			}
+			.tracker-iframe-wrapper iframe {
+				width: 100%;
+				height: 100%;
+				border: none;
+			}
+			.fullscreen-btn {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				background: var(--ember-orange);
+				color: var(--text-color);
+				border: none;
+				padding: 8px 12px;
+				cursor: pointer;
+				border-radius: 4px;
+				font-family: 'Courier New', monospace;
+				z-index: 10;
+				transition: background-color 0.2s ease-in-out;
+			}
+			.fullscreen-btn:hover {
+				background: var(--ember-glow);
 			}
 			#footer-wrapper {
 				background-color: var(--space-blue);
@@ -229,45 +262,50 @@
 			<main>
 				<div class="probes-column">
 					<div class="probe-box">
-						<h3>Outer Solar System</h3>
+						<h3>Active Missions</h3>
 						<ul class="probe-list">
-							<li><span class="probe-status status-safe"></span>Juno (Jupiter)</li>
-							<li><span class="probe-status status-danger"></span>New Horizons (Kuiper Belt)</li>
-							<li><span class="probe-status status-safe"></span>Voyager 1 & 2 (Interstellar Space)</li>
+							<li data-mission="europa_clipper"><span class="probe-status status-active"></span>Europa Clipper</li>
+							<li data-mission="james_webb"><span class="probe-status status-active"></span>James Webb Space Telescope</li>
+							<li data-mission="perseverance"><span class="probe-status status-active"></span>Perseverance Rover</li>
+							<li data-mission="parker_solar_probe"><span class="probe-status status-active"></span>Parker Solar Probe</li>
+							<li data-mission="juno"><span class="probe-status status-active"></span>Juno (Jupiter)</li>
 						</ul>
 					</div>
 					<div class="probe-box">
-						<h3>Inner Solar System</h3>
+						<h3>Historic Missions</h3>
 						<ul class="probe-list">
-							<li><span class="probe-status status-danger"></span>Mars Odyssey</li>
-							<li><span class="probe-status status-danger"></span>MAVEN (Mars)</li>
-							<li><span class="probe-status status-safe"></span>Perseverance Rover (Mars)</li>
-							<li><span class="probe-status status-safe"></span>Parker Solar Probe</li>
+							<li data-mission="voyager_1"><span class="probe-status status-mission"></span>Voyager 1</li>
+							<li data-mission="voyager_2"><span class="probe-status status-mission"></span>Voyager 2</li>
+							<li data-mission="new_horizons"><span class="probe-status status-mission"></span>New Horizons</li>
+							<li data-mission="cassini"><span class="probe-status status-mission"></span>Cassini</li>
 						</ul>
 					</div>
 					<div class="probe-box">
-						<h3>Astrophysics Observatories</h3>
+						<h3>Earth & Moon</h3>
 						<ul class="probe-list">
-							<li><span class="probe-status status-danger"></span>Chandra X-ray Observatory</li>
-							<li><span class="probe-status status-safe"></span>James Webb Space Telescope</li>
-							<li><span class="probe-status status-danger"></span>Hubble Space Telescope</li>
+							<li data-mission="iss"><span class="probe-status status-active"></span>International Space Station</li>
+							<li data-mission="artemis_1"><span class="probe-status status-mission"></span>Artemis I</li>
 						</ul>
 					</div>
 					<div class="legend">
 						<h3>Legend</h3>
 						<ul class="probe-list">
-							<li><span class="probe-status status-safe"></span>Funding Secure</li>
-							<li><span class="probe-status status-danger"></span>At Risk of Cancellation</li>
+							<li><span class="probe-status status-active"></span>Currently Active</li>
+							<li><span class="probe-status status-mission"></span>Historic Mission</li>
 						</ul>
+						<p style="font-size: 0.9em; margin-top: 1em; color: #ccc;">
+							Click any mission to view it in the Eyes on the Solar System viewer
+						</p>
 					</div>
 				</div>
 				<aside class="tracker-column">
 					<div id="europa-tracker-container">
-						<h3>Europa Clipper Mission</h3>
+						<h3>Eyes on the Solar System</h3>
 						<div class="tracker-iframe-wrapper">
+							<button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
 							<iframe
+							  id="solar-system-viewer"
 							  src="https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true"
-							  width="100%" height="600"
 							  frameborder="0"
 							  allowfullscreen>
 							</iframe>
@@ -293,10 +331,59 @@
 			const navToggle = document.querySelector('.nav-toggle');
 			const nav = document.querySelector('#nav');
 			const navLinks = document.querySelector('.nav-links');
+			const iframe = document.getElementById('solar-system-viewer');
 
 			navToggle.addEventListener('click', () => {
 				nav.classList.toggle('nav-open');
 				navLinks.classList.toggle('active');
+			});
+
+			// Mission mapping for Eyes on the Solar System
+			const missionUrls = {
+				'europa_clipper': 'https://eyes.nasa.gov/apps/solar-system/#/sc_europa_clipper?embed=true',
+				'james_webb': 'https://eyes.nasa.gov/apps/solar-system/#/sc_james_webb?embed=true',
+				'perseverance': 'https://eyes.nasa.gov/apps/solar-system/#/sc_perseverance?embed=true',
+				'parker_solar_probe': 'https://eyes.nasa.gov/apps/solar-system/#/sc_parker_solar_probe?embed=true',
+				'juno': 'https://eyes.nasa.gov/apps/solar-system/#/sc_juno?embed=true',
+				'voyager_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_voyager_1?embed=true',
+				'voyager_2': 'https://eyes.gov/apps/solar-system/#/sc_voyager_2?embed=true',
+				'new_horizons': 'https://eyes.nasa.gov/apps/solar-system/#/sc_new_horizons?embed=true',
+				'cassini': 'https://eyes.nasa.gov/apps/solar-system/#/sc_cassini?embed=true',
+				'iss': 'https://eyes.nasa.gov/apps/solar-system/#/sc_iss?embed=true',
+				'artemis_1': 'https://eyes.nasa.gov/apps/solar-system/#/sc_artemis_1?embed=true'
+			};
+
+			// Add click handlers to mission list items
+			document.querySelectorAll('.probe-list li[data-mission]').forEach(item => {
+				item.addEventListener('click', () => {
+					const mission = item.getAttribute('data-mission');
+					if (missionUrls[mission]) {
+						iframe.src = missionUrls[mission];
+					}
+				});
+			});
+
+			// Fullscreen functionality
+			function toggleFullscreen() {
+				const container = document.getElementById('europa-tracker-container');
+				
+				if (!document.fullscreenElement) {
+					container.requestFullscreen().catch(err => {
+						console.log('Error attempting to enable fullscreen:', err);
+					});
+				} else {
+					document.exitFullscreen();
+				}
+			}
+
+			// Listen for fullscreen changes to update button text
+			document.addEventListener('fullscreenchange', () => {
+				const btn = document.querySelector('.fullscreen-btn');
+				if (document.fullscreenElement) {
+					btn.textContent = '⛶ Exit Fullscreen';
+				} else {
+					btn.textContent = '⛶ Fullscreen';
+				}
 			});
 		</script>
 	</body>
