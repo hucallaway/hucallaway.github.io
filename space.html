@@ -245,6 +245,80 @@
 				from { box-shadow: 0 0 5px -2px var(--ember-glow); }
 				to { box-shadow: 0 0 15px 3px var(--ember-glow); }
 			}
+			.budget-charts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+				gap: 2em;
+				margin-bottom: 3em;
+			}
+
+			@media screen and (max-width: 768px) {
+				.budget-charts-grid {
+					grid-template-columns: 1fr;
+					gap: 1em;
+					margin-bottom: 2em;
+				}
+				
+				.chart-container {
+					padding: 1em !important;
+					margin-bottom: 1em;
+				}
+				
+				.chart-container h3 {
+					font-size: 1.1em !important;
+					margin-bottom: 0.8em !important;
+				}
+				
+				.chart-container p {
+					font-size: 0.85em !important;
+					line-height: 1.5 !important;
+				}
+				
+				.chart-container > div:last-child {
+					font-size: 1em !important;
+				}
+				
+				#budget-analysis {
+					padding: 1em !important;
+				}
+				
+				#budget-analysis h2 {
+					font-size: 1.5em !important;
+					margin-bottom: 1.5em !important;
+				}
+				
+				.chart-container[style*="grid-column: 1 / -1"] > div:last-child {
+					grid-template-columns: 1fr !important;
+					gap: 0.5em !important;
+				}
+				
+				.chart-container[style*="grid-column: 1 / -1"] > div:last-child > div {
+					font-size: 1em !important;
+					padding: 0.5em !important;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.budget-charts-grid {
+					gap: 0.8em;
+				}
+				
+				.chart-container {
+					padding: 0.8em !important;
+				}
+				
+				.chart-container h3 {
+					font-size: 1em !important;
+				}
+				
+				.chart-container p {
+					font-size: 0.8em !important;
+				}
+				
+				#budget-analysis h2 {
+					font-size: 1.3em !important;
+				}
+			}
 		</style>
 	</head>
 	<body class="homepage">
@@ -328,7 +402,7 @@
 						NASA's 2026 Budget Crisis
 					</h2>
 					
-					<div class="budget-charts-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); gap: 2em; margin-bottom: 3em;">
+					<div class="budget-charts-grid">
 						
 						<!-- Chart 1: Smallest Budget Since 1961 -->
 						<div class="chart-container" style="background: var(--space-blue); border: 1px solid var(--ember-orange); padding: 1.5em; border-radius: 8px;">
