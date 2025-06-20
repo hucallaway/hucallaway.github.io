@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>The Lodge - Puzzles</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="Custom terminal environment v1.0" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			:root {
+				--space-dark: #0a1929;
+				--space-blue: #1a2939;
+				--ember-orange: #e67e22;
+				--ember-glow: #ff9f43;
+				--text-color: #ffffff;
+			}
+			body {
+				background-color: var(--space-dark);
+				color: var(--text-color);
+				font-family: 'Courier New', monospace;
+			}
+			#page-wrapper {
+				background-color: var(--space-dark);
+			}
+			#header-wrapper {
+				background-color: var(--space-blue);
+				border-bottom: 2px solid var(--ember-orange);
+				padding: 1em 0;
+			}
+			#header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				max-width: 1400px;
+				margin: 0 auto;
+				width: 90%;
+			}
+			#header h1 {
+				margin: 0;
+				font-size: 1.5em;
+			}
+			#header a {
+				color: var(--text-color);
+				text-decoration: none;
+			}
+			#nav .nav-links {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				gap: 1.5em;
+			}
+			#nav a {
+				color: var(--text-color) !important;
+				text-decoration: none;
+				font-size: 1.1em;
+				transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+			}
+			#nav a:hover {
+				color: var(--ember-glow) !important;
+				text-shadow: 0 0 8px var(--ember-glow);
+			}
+			main {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				padding: 2em;
+				gap: 2em;
+			}
+			.puzzle-column {
+				flex: 2;
+				min-width: 300px;
+			}
+			.leaderboard-column {
+				flex: 1;
+				min-width: 300px;
+			}
+			.puzzle-box {
+				background: var(--space-blue);
+				border: 1px solid var(--ember-orange);
+				padding: 2em;
+				animation: pulse-glow 3s infinite alternate;
+				border-radius: 8px;
+			}
+			.puzzle-box h3 {
+				color: var(--ember-glow);
+				text-shadow: 0 0 5px var(--ember-glow);
+				margin: 0 0 1em 0;
+				text-align: center;
+			}
+			.puzzle-content {
+				text-align: center;
+				font-size: 1.1em;
+				line-height: 1.6;
+			}
+			.leaderboard-box {
+				background: var(--space-blue);
+				border: 1px solid var(--ember-orange);
+				padding: 1.5em;
+				border-radius: 8px;
+			}
+			.leaderboard-box h3 {
+				color: var(--ember-glow);
+				text-align: center;
+				margin-bottom: 1em;
+			}
+			.leaderboard-table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.leaderboard-table th, .leaderboard-table td {
+				padding: 0.75em;
+				text-align: left;
+				border-bottom: 1px solid var(--ember-orange);
+			}
+			.leaderboard-table th {
+				color: var(--ember-glow);
+			}
+			#footer-wrapper {
+				background-color: var(--space-blue);
+				border-top: 2px solid var(--ember-orange);
+			}
+			@keyframes pulse-glow {
+				from { box-shadow: 0 0 5px -2px var(--ember-glow); }
+				to { box-shadow: 0 0 15px 3px var(--ember-glow); }
+			}
+		</style>
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div id="header">
+					<h1><a href="index.html" id="logo">The Lodge</a></h1>
+					<nav id="nav" role="navigation">
+						<ul class="nav-links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="space.html">Space</a></li>
+							<li><a href="puzzles.html">Puzzles</a></li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<main>
+				<div class="puzzle-column">
+					<div class="puzzle-box">
+						<h3>Current Puzzle Challenge</h3>
+						<div class="puzzle-content">
+							<p>A new puzzle will be posted here soon. Stay tuned!</p>
+							<p>Check the leaderboard to see past winners.</p>
+						</div>
+					</div>
+				</div>
+				<aside class="leaderboard-column">
+					<div class="leaderboard-box">
+						<h3>Leaderboard</h3>
+						<table class="leaderboard-table">
+							<thead>
+								<tr>
+									<th>Name of Winner</th>
+									<th>Name of Challenge Won</th>
+									<th>Date of Win</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Kyle Lewis</td>
+									<td>Flagship Puzzle Challenge</td>
+									<td>June 20, 2025</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</aside>
+			</main>
+
+			<footer id="footer-wrapper" role="contentinfo">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright" style="font-family: 'Courier New', monospace;">
+								<span class="blink">>></span> &copy; The Lodge. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html> 
