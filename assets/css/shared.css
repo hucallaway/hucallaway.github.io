@@ -1531,21 +1531,22 @@ a:hover {
 .about-header {
 	text-align: left;
 	margin-bottom: 3em;
-	border-bottom: 2px solid #ddd;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 	padding-bottom: 2em;
 }
 
 .about-header h1 {
 	font-size: 2.5em;
 	margin: 0 0 0.5em 0;
+	color: #fff;
 }
 
 .about-header .contact-info {
 	font-size: 1em;
-	color: #777;
+	color: #a0b5d3;
 }
 .about-header .contact-info a {
-	color: #007bff;
+	color: #4a90e2;
 	text-decoration: none;
 }
 
@@ -1556,8 +1557,8 @@ a:hover {
 
 .section-title {
 	font-size: 1.8em;
-	color: #333;
-	border-bottom: 1px solid #eee;
+	color: #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	padding-bottom: 0.5em;
 	margin-bottom: 1em;
 }
@@ -1575,10 +1576,11 @@ a:hover {
 .education-header h3 {
 	margin: 0;
 	font-size: 1.2em;
+	color: #e0e5ec;
 }
 .education-header span {
 	font-style: italic;
-	color: #666;
+	color: #a0b5d3;
 	font-size: 0.9em;
 }
 .education-entry p {
@@ -1592,18 +1594,21 @@ a:hover {
 	gap: 1.5em;
 }
 .activity-item {
-	background-color: #f8f9fa;
-	border: 1px solid #e9ecef;
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: 6px;
 	padding: 1.5em;
 }
 .activity-item h4 {
 	margin: 0 0 0.5em 0;
 	font-size: 1.1em;
-	color: #333;
+	color: #fff;
+}
+.activity-item p {
+	color: #a0b5d3;
 }
 
-/* Right Column - Timeline Styles */
+/* Right Column - Redesigned Timeline */
 .right-column {
 	position: relative;
 }
@@ -1619,92 +1624,71 @@ a:hover {
 	left: 50%;
 	top: 0;
 	bottom: 0;
-	width: 3px; /* Thinner line */
-	background: rgba(255, 255, 255, 0.15); /* Softer line color */
+	width: 3px;
+	background: rgba(255, 255, 255, 0.1);
 	transform: translateX(-50%);
 	z-index: 1;
 }
 
 .timeline-item {
 	position: relative;
-	margin-bottom: 4em;
+	margin-bottom: 5em;
 	z-index: 2;
+	color: #e0e5ec;
 }
 
+.timeline-item::after { /* The dot on the timeline */
+	content: '';
+	position: absolute;
+	top: 0.5em;
+	left: 50%;
+	width: 16px;
+	height: 16px;
+	background-color: #0d1b2a;
+	border: 3px solid #4a90e2;
+	border-radius: 50%;
+	transform: translateX(-50%);
+	z-index: 3;
+	transition: background-color 0.3s ease;
+}
+
+.timeline-item:hover::after {
+	background-color: #4a90e2;
+}
+
+.timeline-item.current::after {
+	background-color: #4a90e2;
+	box-shadow: 0 0 12px rgba(74, 144, 226, 0.8);
+}
+
+/* Snaking logic starts on the right */
 .timeline-item:nth-child(odd) .timeline-content {
-	margin-left: 0;
-	margin-right: 55%;
-	text-align: right;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-	margin-left: 55%;
-	margin-right: 0;
+	margin-left: 54%;
 	text-align: left;
 }
 
-.timeline-item.current .timeline-content {
-	margin-left: 0;
-	margin-right: 55%;
+.timeline-item:nth-child(even) .timeline-content {
+	margin-right: 54%;
 	text-align: right;
-	background-color: rgba(0, 123, 255, 0.1); /* Highlight color */
-	border-color: rgba(0, 123, 255, 0.5);
 }
 
 .timeline-content {
-	background-color: rgba(23, 37, 51, 0.5); /* Dark, translucent background */
-	border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-	border-radius: 8px;
-	padding: 2em;
 	position: relative;
-	transition: all 0.3s ease;
-	width: 100%;
+	padding: 0 3em;
 	box-sizing: border-box;
-	color: #e0e5ec; /* Light text color for readability */
-}
-
-.timeline-content:hover {
-	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-	border-color: rgba(255, 255, 255, 0.3);
-	transform: translateY(-5px);
-}
-
-.timeline-content::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	width: 18px; /* Slightly smaller dot */
-	height: 18px;
-	background-color: #0d1b2a; /* Match page background */
-	border: 4px solid #4a90e2; /* Accent color border */
-	border-radius: 50%;
-	transform: translateY(-50%);
-	z-index: 3;
-}
-
-.timeline-item.current .timeline-content::before {
-	right: -60px;
-	background-color: #4a90e2; /* Fill color for current item */
-	box-shadow: 0 0 10px rgba(74, 144, 226, 0.7);
-}
-
-.job-header {
-	margin-bottom: 1.5em;
 }
 
 .job-header h3 {
-	margin: 0;
-	font-size: 1.4em;
-	color: #ffffff; /* White for high contrast */
+	color: #ffffff;
+	font-size: 1.6em;
 }
 .job-header p {
+	color: #a0b5d3;
 	font-size: 1.1em;
 	font-style: italic;
-	color: #a0b5d3; /* Lighter accent color */
-	margin: 0.25em 0 0.5em 0;
 }
 .job-header span {
-	color: #777;
+	color: #8899aa;
 	font-size: 0.9em;
 }
 
@@ -1715,172 +1699,31 @@ a:hover {
 }
 
 .accomplishments {
-	padding-left: 1.5em;
-	margin: 0;
+	padding-left: 1.2em;
+	margin: 1em 0;
 }
-
+.timeline-item:nth-child(even) .accomplishments {
+    padding-left: 0;
+    padding-right: 1.2em;
+}
 .accomplishments li {
 	margin-bottom: 0.75em;
+	list-style-position: outside;
 }
 
-/* Job Visuals */
 .job-visual {
-	background-color: rgba(0, 0, 0, 0.2); /* Darker visual background */
+	background-color: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.1);
 	border-radius: 6px;
 	padding: 1.5em;
-	text-align: center;
+	margin-top: 1.5em;
 }
-
 .job-visual h4 {
-	margin: 0 0 1em 0;
-	font-size: 1em;
-	color: #334e68;
+	color: #a0b5d3;
 }
 
-/* Bar Chart */
-.bar-chart .bar-label {
-	font-size: 0.9em;
-	font-weight: bold;
-	color: #243b53;
-	margin-bottom: 0.5em;
-}
-.bar-chart .bar-container {
-	background-color: #d1dce5;
-	border-radius: 4px;
-	height: 25px;
-	width: 100%;
-}
-.bar-chart .bar-fill {
-	background-color: #4a90e2;
-	height: 100%;
-	border-radius: 4px;
-}
 
-/* Stat Box */
-.stat-box .stat-value {
-	font-size: 2.5em;
-	font-weight: bold;
-	color: #007bff;
-	line-height: 1;
-}
-.stat-box .stat-description {
-	font-size: 0.9em;
-	color: #555;
-}
-
-/* Dual Stat Box */
-.dual-stat-box {
-    display: flex;
-    justify-content: space-around;
-    gap: 1em;
-}
-.dual-stat-box .stat-item {
-    flex: 1;
-}
-.dual-stat-box .stat-value {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #007bff;
-}
-.dual-stat-box .stat-description {
-    font-size: 0.8em;
-    color: #555;
-}
-
-/* Language Blocks */
-.language-blocks {
-	display: flex;
-	justify-content: center;
-	gap: 8px;
-	padding: 1em 0;
-}
-.lang-block {
-	background-color: #334e68;
-	color: white;
-	padding: 0.6em 1em;
-	border-radius: 4px;
-	font-weight: bold;
-	font-size: 0.9em;
-}
-
-/* Timeline Visual */
-.timeline-visual {
-    position: relative;
-    padding: 1.5em 0;
-}
-.timeline-line {
-    width: 100%;
-    height: 3px;
-    background-color: #d1dce5;
-    border-radius: 2px;
-}
-.timeline-point {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    background-color: #4a90e2;
-    border-radius: 50%;
-    border: 2px solid white;
-}
-.timeline-point.start { left: 0; }
-.timeline-point.end { right: 0; }
-.timeline-point::after {
-    content: attr(data-year);
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.8em;
-    font-weight: bold;
-}
-.timeline-label {
-    margin-top: 0.5em;
-    font-size: 0.9em;
-    font-weight: bold;
-    color: #334e68;
-}
-
-@media (max-width: 768px) {
-	.about-layout {
-		grid-template-columns: 1fr;
-		gap: 2em;
-	}
-	.left-column {
-		position: static;
-	}
-	.timeline-container::before {
-		left: 20px;
-	}
-	.timeline-item:nth-child(odd) .timeline-content,
-	.timeline-item:nth-child(even) .timeline-content,
-	.timeline-item.current .timeline-content {
-		margin-left: 50px;
-		margin-right: 0;
-		text-align: left;
-	}
-	.timeline-item:nth-child(odd) .timeline-content::before,
-	.timeline-item:nth-child(even) .timeline-content::before,
-	.timeline-item.current .timeline-content::before {
-		left: -35px;
-		right: auto;
-	}
-}
-
-@media (max-width: 768px) {
-	.about-page {
-		padding: 2em 1em;
-	}
-	.education-header {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-	.timeline-content {
-		padding: 1.5em;
-	}
-} 
-
+/* Responsive Overrides */
 @media (max-width: 1200px) {
 	.about-layout {
 		grid-template-columns: 1fr 2fr;
@@ -1892,5 +1735,22 @@ a:hover {
 	.about-layout {
 		grid-template-columns: 1fr;
 	}
-	/* ... rest of responsive styles for timeline ... */
+	.left-column {
+		position: static;
+	}
+	.timeline-container::before,
+	.timeline-item::after {
+		left: 10px;
+	}
+	.timeline-item:nth-child(odd) .timeline-content,
+	.timeline-item:nth-child(even) .timeline-content {
+		margin-left: 40px;
+		margin-right: 0;
+		text-align: left;
+		padding: 0 1em;
+	}
+	.timeline-item:nth-child(even) .accomplishments {
+        padding-left: 1.2em;
+        padding-right: 0;
+    }
 } 
