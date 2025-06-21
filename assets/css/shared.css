@@ -15,17 +15,19 @@
 /* Base Styles */
 body {
 	background-color: var(--space-dark);
-	color: var(--text-color);
+	color: #f0f0f0; /* Light gray for high contrast */
 	font-family: 'Courier New', monospace;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
+	font-size: 1.37em; /* Increase font size by 37% */
 }
 
 #page-wrapper {
 	background-color: var(--space-dark);
 	margin: 0;
 	padding: 0;
+	color: #f0f0f0 !important; /* Ensure all text is high contrast */
 }
 
 /* Header Styles */
@@ -1508,10 +1510,12 @@ a:hover {
 	margin: 0 auto;
 }
 
-.about-page p, .about-page li {
-	font-size: 1.15em; /* Increased base font size for readability */
-	line-height: 1.6;
-	color: var(--text-color);
+.about-page p, .about-page li, .about-page h1, .about-page h2, .about-page h3, .about-page h4 {
+	color: #f0f0f0 !important; /* Ensure all text is high contrast */
+}
+
+.about-page a {
+    color: #9adbe8 !important; /* Lighter blue for links */
 }
 
 .about-layout {
@@ -1594,18 +1598,19 @@ a:hover {
 	gap: 1.5em;
 }
 .activity-item {
-	background-color: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	border-radius: 6px;
+	background-color: #1a2939;
 	padding: 1.5em;
+	border-radius: 8px;
+	margin-bottom: 1.5em;
+	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .activity-item h4 {
-	margin: 0 0 0.5em 0;
-	font-size: 1.1em;
-	color: #fff;
+	color: var(--ember-glow);
+	margin-bottom: 0.5em;
 }
 .activity-item p {
-	color: #a0b5d3;
+	font-size: 1em;
+	line-height: 1.6;
 }
 
 /* Right Column - Redesigned Timeline */
@@ -1668,14 +1673,17 @@ a:hover {
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-	margin-right: 54%;
-	text-align: right;
+	left: 0;
+	padding-left: 25px;
+	text-align: left;
 }
 
 .timeline-content {
+	background-color: #1a2939; /* Solid background color */
+	padding: 1.5em;
+	border-radius: 8px;
 	position: relative;
-	padding: 0 3em;
-	box-sizing: border-box;
+	width: calc(50% - 25px);
 }
 
 .job-header h3 {
