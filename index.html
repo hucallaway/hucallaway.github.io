@@ -6,7 +6,7 @@
 -->
 <html lang="en">
 	<head>
-		<title>The Lodge - Under Maintenance</title>
+		<title>The Lodge - Welcome</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
@@ -31,14 +31,14 @@
 		<!-- Open Graph Meta Tags -->
 		<meta property="og:type" content="website">
 		<meta property="og:site_name" content="The Lodge">
-		<meta property="og:title" content="The Lodge - Under Maintenance">
-		<meta property="og:description" content="Hunter Callaway's personal website undergoing maintenance with a unique space theme.">
+		<meta property="og:title" content="The Lodge - Welcome">
+		<meta property="og:description" content="Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.">
 		<meta property="og:url" content="https://hucallaway.github.io/">
 		
 		<!-- Twitter Card Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="The Lodge - Under Maintenance">
-		<meta name="twitter:description" content="Hunter Callaway's personal website undergoing maintenance with a unique space theme.">
+		<meta name="twitter:title" content="The Lodge - Welcome">
+		<meta name="twitter:description" content="Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.">
 		
 		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -58,8 +58,8 @@
 		{
 			"@context": "https://schema.org",
 			"@type": "WebPage",
-			"name": "The Lodge Maintenance",
-			"description": "Website undergoing maintenance. Cosmic homestead theme.",
+			"name": "The Lodge",
+			"description": "Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.",
 			"publisher": {
 				"@type": "Organization",
 				"name": "The Lodge"
@@ -92,17 +92,16 @@
 				</div>
 			</header>
 
-			<main role="main" aria-label="Maintenance Content">
+			<main role="main" aria-label="Welcome Content">
 				<div class="content-wrapper">
-					<div id="countdown"></div>
 					<img src="assets/css/images/maintenance-deusex.png?v=1" 
 						 alt="A pixel art scene showing a person and an AI playing chess in a spaceship, with Saturn visible through the window" 
 						 class="maintenance-scene">
 					
 					<div class="message-box">
-						<h2>welcome to hunter's website!</h2>
+						<h2>welcome to the lodge!</h2>
 						<p class="pixel-text">
-							I'm doing some routine maintenance, but we'll be back to our regularly scheduled programming soon. In the meantime, you can preview the new <a href="space.html">Space section</a> and <a href="puzzles.html">Puzzles section</a>.
+							Welcome to my digital homestead! This is a soft launch of my personal website featuring space exploration content, interactive puzzles, and my professional background. Navigate using the menu above to explore different sections.
 						</p>
 						<div class="accessibility-controls">
 							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
@@ -146,40 +145,6 @@
 			navToggle.addEventListener('click', () => {
 				nav.classList.toggle('nav-open');
 				navLinks.classList.toggle('active');
-			});
-
-			// Countdown Timer
-			function updateCountdown() {
-				const targetDate = new Date('July 1, 2025 12:00:00 EDT').getTime();
-				
-				function update() {
-					const now = new Date().getTime();
-					const distance = targetDate - now;
-
-					const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-					const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-					const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-					const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-					const countdown = document.getElementById('countdown');
-					if (countdown) {
-						countdown.textContent = `${days}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-					}
-
-					if (distance < 0) {
-						clearInterval(timerInterval);
-						if (countdown) {
-							countdown.textContent = '00:00:00:00';
-						}
-					}
-				}
-
-				update();
-				const timerInterval = setInterval(update, 1000);
-			}
-
-			document.addEventListener('DOMContentLoaded', () => {
-				updateCountdown();
 			});
 		</script>
 	</body>
