@@ -124,13 +124,78 @@ article, section {
 
 .left-column {
 	flex: 1;
+	max-width: 500px;
 }
 
 .right-column {
 	flex: 2;
 }
 
-/* About Page Timeline */
+/* About Page - Left Column */
+.about-page .about-header h1 {
+	font-size: 2.8em;
+	color: var(--ember-orange);
+	text-shadow: 0 0 10px var(--ember-glow);
+	margin-bottom: 0.5em;
+}
+
+.about-page .blurb {
+	font-size: 1.1em;
+	line-height: 1.6;
+	color: #f0f0f0;
+}
+
+.about-page .about-section {
+	padding: 1.5em;
+	background-color: var(--space-blue);
+	border-radius: 8px;
+	margin-top: 2em;
+	border: 1px solid var(--ember-orange);
+}
+
+.about-page .section-title {
+	font-size: 1.8em;
+	color: var(--ember-glow);
+	border-bottom: 2px solid var(--ember-orange);
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+
+.about-page .education-entry, .about-page .activity-item {
+	background-color: rgba(255, 255, 255, 0.05);
+	padding: 1em;
+	border-radius: 6px;
+	margin-bottom: 1em;
+	color: #f0f0f0;
+}
+
+.about-page .education-entry:last-child, .about-page .activity-item:last-child {
+	margin-bottom: 0;
+}
+
+.about-page .education-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.about-page .education-header h3, .about-page .activity-item h4 {
+	color: var(--text-color);
+	font-weight: bold;
+}
+
+.about-page .education-header span {
+	font-style: italic;
+	opacity: 0.7;
+	white-space: nowrap;
+	margin-left: 1em;
+}
+
+.about-page p {
+	color: #f0f0f0;
+}
+
+/* About Page - Snaking Timeline */
 .timeline-container {
 	position: relative;
 	max-width: 1200px;
@@ -150,55 +215,51 @@ article, section {
 }
 
 .timeline-item {
-	padding: 0 20px 20px 20px;
+	padding: 10px 40px;
 	position: relative;
 	background-color: inherit;
 	width: 50%;
-	box-sizing: border-box;
 }
 
-.timeline-item:nth-child(odd) {
-	left: 0;
-    padding-right: 30px;
-}
-
-.timeline-item:nth-child(even) {
-	left: 50%;
-    padding-left: 30px;
+.timeline-item.current::after {
+	background: var(--safe-green);
+	border-color: var(--safe-green);
+	box-shadow: 0 0 15px var(--safe-green);
 }
 
 .timeline-item::after {
 	content: '';
 	position: absolute;
-	width: 16px;
-	height: 16px;
+	width: 20px;
+	height: 20px;
 	background-color: var(--space-dark);
-	border: 3px solid var(--ember-glow);
+	border: 4px solid var(--ember-glow);
 	top: 24px;
 	border-radius: 50%;
 	z-index: 1;
 }
 
+.timeline-item:nth-child(odd) {
+	left: 0;
+}
+
+.timeline-item:nth-child(even) {
+	left: 50%;
+}
+
 .timeline-item:nth-child(odd)::after {
-	right: -8px;
+	right: -10px;
 }
 
 .timeline-item:nth-child(even)::after {
-	left: -8px;
-}
-
-.timeline-item.current::after {
-	background-color: var(--safe-green);
-	border-color: var(--safe-green);
-	box-shadow: 0 0 10px var(--safe-green);
+	left: -10px;
 }
 
 .timeline-content {
-	padding: 1.5em;
+	padding: 20px 30px;
 	background-color: var(--space-blue);
 	position: relative;
 	border-radius: 8px;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .job-header h3 {
@@ -206,7 +267,8 @@ article, section {
 	color: var(--ember-glow);
 }
 
-.job-header p {
+.job-header p, .job-header span {
+	color: #f0f0f0;
 	margin: 0.2em 0;
 }
 
@@ -223,12 +285,13 @@ article, section {
 }
 
 .job-visual h4 {
-	font-size: 0.9em;
+	font-size: 0.8em;
 	font-weight: bold;
-	color: var(--ember-glow);
+	color: var(--text-color);
 	margin-bottom: 0.5em;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	opacity: 0.7;
 }
 
 .bar-chart .bar-label {
@@ -248,11 +311,6 @@ article, section {
 	background-color: var(--ember-orange);
 	height: 100%;
 	border-radius: 4px;
-	text-align: right;
-	padding-right: 5px;
-	line-height: 1.5em;
-	color: white;
-	font-size: 0.8em;
 }
 
 .stat-box {
@@ -263,7 +321,7 @@ article, section {
 }
 
 .stat-value {
-	font-size: 2em;
+	font-size: 1.8em;
 	font-weight: bold;
 	color: var(--ember-glow);
 }
@@ -278,6 +336,7 @@ article, section {
 	display: flex;
 	gap: 0.5em;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .lang-block {
@@ -295,6 +354,34 @@ article, section {
 
 .dual-stat-box .stat-item {
 	text-align: center;
+}
+
+@media screen and (max-width: 980px) {
+	.about-layout {
+		flex-direction: column;
+	}
+
+	.left-column {
+		max-width: 100%;
+	}
+	
+	.timeline-container::after {
+		left: 30px;
+	}
+
+	.timeline-item {
+		width: 100%;
+		padding-left: 70px;
+		padding-right: 20px;
+	}
+
+	.timeline-item:nth-child(even) {
+		left: 0%;
+	}
+	
+	.timeline-item::after {
+		left: 20px;
+	}
 }
 
 /* Puzzles Page */
