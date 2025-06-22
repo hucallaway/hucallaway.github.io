@@ -70,25 +70,16 @@
 	<body>
 		<div id="page-wrapper">
 			<header id="header-wrapper" role="banner">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div id="header">
-								<h1><a href="/" id="logo">The Lodge</a></h1>
-								<nav id="nav" role="navigation">
-									<button class="nav-toggle" aria-label="toggle navigation">
-										<span class="hamburger"></span>
-									</button>
-									<ul class="nav-links">
-										<li><a href="/">Home</a></li>
-										<li><a href="space.html">Space</a></li>
-										<li><a href="puzzles.html">Puzzles</a></li>
-										<li><a href="about.html">About</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
+				<div id="header">
+					<div id="logo-text">The Lodge</div>
+					<nav id="nav" role="navigation">
+						<ul class="nav-labels">
+							<li>Home</li>
+							<li>Space</li>
+							<li>Puzzles</li>
+							<li>About</li>
+						</ul>
+					</nav>
 				</div>
 			</header>
 
@@ -137,15 +128,7 @@
 				document.body.classList.toggle('simplified');
 			}
 
-			// Mobile Navigation Toggle
-			const navToggle = document.querySelector('.nav-toggle');
-			const nav = document.querySelector('#nav');
-			const navLinks = document.querySelector('.nav-links');
-
-			navToggle.addEventListener('click', () => {
-				nav.classList.toggle('nav-open');
-				navLinks.classList.toggle('active');
-			});
+			// Enhanced header is now managed by CSS
 		</script>
 	</body>
 </html> 
