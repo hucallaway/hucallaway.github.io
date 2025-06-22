@@ -130,6 +130,173 @@ article, section {
 	flex: 2;
 }
 
+/* About Page Timeline */
+.timeline-container {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.timeline-container::after {
+	content: '';
+	position: absolute;
+	width: 3px;
+	background-color: var(--ember-orange);
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	margin-left: -1.5px;
+	box-shadow: 0 0 10px var(--ember-glow);
+}
+
+.timeline-item {
+	padding: 0 20px 20px 20px;
+	position: relative;
+	background-color: inherit;
+	width: 50%;
+	box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+	left: 0;
+    padding-right: 30px;
+}
+
+.timeline-item:nth-child(even) {
+	left: 50%;
+    padding-left: 30px;
+}
+
+.timeline-item::after {
+	content: '';
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background-color: var(--space-dark);
+	border: 3px solid var(--ember-glow);
+	top: 24px;
+	border-radius: 50%;
+	z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::after {
+	right: -8px;
+}
+
+.timeline-item:nth-child(even)::after {
+	left: -8px;
+}
+
+.timeline-item.current::after {
+	background-color: var(--safe-green);
+	border-color: var(--safe-green);
+	box-shadow: 0 0 10px var(--safe-green);
+}
+
+.timeline-content {
+	padding: 1.5em;
+	background-color: var(--space-blue);
+	position: relative;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.job-header h3 {
+	font-size: 1.2em;
+	color: var(--ember-glow);
+}
+
+.job-header p {
+	margin: 0.2em 0;
+}
+
+.job-header span {
+	font-size: 0.9em;
+	opacity: 0.7;
+}
+
+/* Job Visuals in Timeline */
+.job-visual {
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.job-visual h4 {
+	font-size: 0.9em;
+	font-weight: bold;
+	color: var(--ember-glow);
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.bar-chart .bar-label {
+	font-size: 0.8em;
+	margin-bottom: 0.3em;
+}
+
+.bar-container {
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	height: 1.5em;
+    overflow: hidden;
+}
+
+.bar-fill {
+	background-color: var(--ember-orange);
+	height: 100%;
+	border-radius: 4px;
+	text-align: right;
+	padding-right: 5px;
+	line-height: 1.5em;
+	color: white;
+	font-size: 0.8em;
+}
+
+.stat-box {
+	background-color: rgba(0,0,0,0.2);
+	border-radius: 4px;
+	padding: 1em;
+	text-align: center;
+}
+
+.stat-value {
+	font-size: 2em;
+	font-weight: bold;
+	color: var(--ember-glow);
+}
+
+.stat-description {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.7);
+}
+
+.language-blocks {
+	display: flex;
+	gap: 0.5em;
+	justify-content: center;
+}
+
+.lang-block {
+	background-color: rgba(0,0,0,0.2);
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+.dual-stat-box {
+	display: flex;
+	gap: 1em;
+	justify-content: space-around;
+}
+
+.dual-stat-box .stat-item {
+	text-align: center;
+}
+
 /* Puzzles Page */
 .puzzle-content {
 	text-align: center;
