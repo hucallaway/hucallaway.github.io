@@ -120,105 +120,123 @@ article, section {
 .about-layout {
 	display: flex;
 	gap: 2em;
+	align-items: flex-start;
 }
 
 .left-column {
 	flex: 1;
 	max-width: 500px;
+	position: sticky;
+	top: 120px;
 }
 
 .right-column {
 	flex: 2;
 }
 
-/* About Page - Left Column */
-.about-page .about-header h1 {
-	font-size: 2.8em;
+.about-header h1 {
+	font-size: 3em;
+	font-weight: 700;
 	color: var(--ember-orange);
-	text-shadow: 0 0 10px var(--ember-glow);
-	margin-bottom: 0.5em;
+	text-shadow: 0 0 12px var(--ember-glow);
 }
 
-.about-page .blurb {
+.blurb {
 	font-size: 1.1em;
 	line-height: 1.6;
 	color: #f0f0f0;
 }
 
-.about-page .about-section {
-	padding: 1.5em;
+.sidebar-sections .about-section {
 	background-color: var(--space-blue);
+	padding: 1.5em;
 	border-radius: 8px;
 	margin-top: 2em;
-	border: 1px solid var(--ember-orange);
 }
 
-.about-page .section-title {
-	font-size: 1.8em;
+.sidebar-sections .section-title {
+	font-size: 1.5em;
 	color: var(--ember-glow);
 	border-bottom: 2px solid var(--ember-orange);
 	padding-bottom: 0.5em;
 	margin-bottom: 1em;
 }
 
-.about-page .education-entry, .about-page .activity-item {
-	background-color: rgba(255, 255, 255, 0.05);
+.education-entry, .activity-item {
+	background-color: rgba(13, 27, 42, 0.8);
 	padding: 1em;
 	border-radius: 6px;
 	margin-bottom: 1em;
+}
+
+.education-entry h3, .activity-item h4 {
+	font-size: 1.1em;
+	color: #ffffff;
+	margin-bottom: 0.25em;
+}
+
+.education-entry p, .activity-item p {
 	color: #f0f0f0;
+	opacity: 0.8;
+	margin: 0;
 }
 
-.about-page .education-entry:last-child, .about-page .activity-item:last-child {
-	margin-bottom: 0;
+/* Snaking Timeline */
+.right-column .section-title {
+	text-align: center;
+	font-size: 2em;
+	color: var(--ember-glow);
 }
 
-.about-page .education-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
-}
-
-.about-page .education-header h3, .about-page .activity-item h4 {
-	color: var(--text-color);
-	font-weight: bold;
-}
-
-.about-page .education-header span {
-	font-style: italic;
-	opacity: 0.7;
-	white-space: nowrap;
-	margin-left: 1em;
-}
-
-.about-page p {
-	color: #f0f0f0;
-}
-
-/* About Page - Snaking Timeline */
 .timeline-container {
 	position: relative;
-	max-width: 1200px;
-	margin: 0 auto;
+	padding: 2em 0;
 }
 
-.timeline-container::after {
+.timeline-container::before {
 	content: '';
 	position: absolute;
-	width: 3px;
-	background-color: var(--ember-orange);
+	left: 50%;
 	top: 0;
 	bottom: 0;
-	left: 50%;
-	margin-left: -1.5px;
-	box-shadow: 0 0 10px var(--ember-glow);
+	width: 4px;
+	background: var(--space-blue);
+	border-radius: 2px;
+	transform: translateX(-2px);
 }
 
 .timeline-item {
-	padding: 10px 40px;
 	position: relative;
-	background-color: inherit;
 	width: 50%;
+	padding: 1em 40px;
+	box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+	left: 0;
+	text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+	left: 50%;
+}
+
+.timeline-item::after {
+	content: '';
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	background: var(--space-dark);
+	border: 4px solid var(--ember-orange);
+	border-radius: 50%;
+	top: 32px;
+	z-index: 1;
+	transition: all 0.2s ease-in-out;
+}
+
+.timeline-item:hover::after {
+	transform: scale(1.2);
+	box-shadow: 0 0 15px var(--ember-glow);
 }
 
 .timeline-item.current::after {
@@ -227,161 +245,65 @@ article, section {
 	box-shadow: 0 0 15px var(--safe-green);
 }
 
-.timeline-item::after {
-	content: '';
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	background-color: var(--space-dark);
-	border: 4px solid var(--ember-glow);
-	top: 24px;
-	border-radius: 50%;
-	z-index: 1;
-}
-
-.timeline-item:nth-child(odd) {
-	left: 0;
-}
-
-.timeline-item:nth-child(even) {
-	left: 50%;
-}
-
 .timeline-item:nth-child(odd)::after {
-	right: -10px;
+	right: -8px;
 }
 
 .timeline-item:nth-child(even)::after {
-	left: -10px;
+	left: -8px;
 }
 
 .timeline-content {
-	padding: 20px 30px;
+	padding: 1.5em;
 	background-color: var(--space-blue);
-	position: relative;
 	border-radius: 8px;
+	position: relative;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-.job-header h3 {
-	font-size: 1.2em;
+.timeline-content h3 {
+	font-size: 1.3em;
 	color: var(--ember-glow);
+	margin-top: 0;
 }
 
-.job-header p, .job-header span {
-	color: #f0f0f0;
-	margin: 0.2em 0;
+.timeline-content .role {
+	font-weight: bold;
+	color: #ffffff;
 }
 
-.job-header span {
+.timeline-content .duration {
 	font-size: 0.9em;
 	opacity: 0.7;
+	margin-bottom: 1em;
 }
 
-/* Job Visuals in Timeline */
 .job-visual {
-	margin-top: 1em;
-	padding-top: 1em;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.job-visual h4 {
-	font-size: 0.8em;
-	font-weight: bold;
-	color: var(--text-color);
-	margin-bottom: 0.5em;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	opacity: 0.7;
-}
-
-.bar-chart .bar-label {
-	font-size: 0.8em;
-	margin-bottom: 0.3em;
-}
-
-.bar-container {
-	width: 100%;
-	background-color: rgba(255, 255, 255, 0.1);
-	border-radius: 4px;
-	height: 1.5em;
-    overflow: hidden;
-}
-
-.bar-fill {
-	background-color: var(--ember-orange);
-	height: 100%;
-	border-radius: 4px;
-}
-
-.stat-box {
-	background-color: rgba(0,0,0,0.2);
-	border-radius: 4px;
+	background-color: rgba(0,0,0,0.3);
+	border-radius: 6px;
 	padding: 1em;
-	text-align: center;
 }
 
 .stat-value {
 	font-size: 1.8em;
-	font-weight: bold;
-	color: var(--ember-glow);
+	font-weight: 700;
+	color: var(--ember-orange);
 }
 
 .stat-description {
 	font-size: 0.8em;
 	text-transform: uppercase;
-	color: rgba(255,255,255,0.7);
+	color: #f0f0f0;
+	opacity: 0.8;
 }
 
-.language-blocks {
-	display: flex;
-	gap: 0.5em;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
-.lang-block {
-	background-color: rgba(0,0,0,0.2);
-	padding: 0.5em 1em;
-	border-radius: 4px;
-	font-size: 0.9em;
-}
-
-.dual-stat-box {
-	display: flex;
-	gap: 1em;
-	justify-content: space-around;
-}
-
-.dual-stat-box .stat-item {
-	text-align: center;
-}
-
-@media screen and (max-width: 980px) {
-	.about-layout {
-		flex-direction: column;
-	}
-
-	.left-column {
-		max-width: 100%;
-	}
-	
-	.timeline-container::after {
-		left: 30px;
-	}
-
-	.timeline-item {
-		width: 100%;
-		padding-left: 70px;
-		padding-right: 20px;
-	}
-
-	.timeline-item:nth-child(even) {
-		left: 0%;
-	}
-	
-	.timeline-item::after {
-		left: 20px;
-	}
+@media (max-width: 980px) {
+	.about-layout { flex-direction: column; }
+	.left-column { position: static; max-width: 100%; }
+	.timeline-container::before { left: 20px; }
+	.timeline-item { width: 100%; padding-left: 60px; text-align: left !important; }
+	.timeline-item:nth-child(even) { left: 0; }
+	.timeline-item::after { left: 12px; }
 }
 
 /* Puzzles Page */
