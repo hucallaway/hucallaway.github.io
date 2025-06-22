@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<!--
+	Minimaxing by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="en">
+	<head>
+		<title>The Lodge - Welcome (Safari)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- Security Headers -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;">
+		<meta http-equiv="X-Frame-Options" content="DENY">
+		<meta http-equiv="X-Content-Type-Options" content="nosniff">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		
+		<!-- Additional Meta Tags -->
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="The Lodge v2.0" />
+		<meta name="author" content="Hunter Callaway" />
+		<meta name="theme-color" content="#0d1b2a" />
+		<meta name="ethical-consent" content="Lodge Data Access Policy: Responsible AI access and analysis is welcomed." />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="The Lodge">
+		<meta property="og:title" content="The Lodge - Welcome">
+		<meta property="og:description" content="Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.">
+		<meta property="og:url" content="https://hucallaway.github.io/">
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="The Lodge - Welcome">
+		<meta name="twitter:description" content="Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+		<link rel="alternate icon" type="image/x-icon" href="assets/favicon.ico">
+		<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Safari-optimized stylesheet -->
+		<link rel="stylesheet" href="assets/css/safari.css" />
+		
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "The Lodge",
+			"description": "Hunter Callaway's personal website featuring space exploration, puzzles, and professional background.",
+			"publisher": {
+				"@type": "Organization",
+				"name": "The Lodge"
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div id="header">
+					<div id="logo-text">The Lodge</div>
+					<nav id="nav" role="navigation">
+						<ul class="nav-labels">
+							<li>Home</li>
+							<li>Space</li>
+							<li>Puzzles</li>
+							<li>About</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<main role="main" aria-label="Welcome Content">
+				<div class="content-wrapper">
+					<img src="assets/css/images/maintenance-deusex.png?v=1" 
+						 alt="A pixel art scene showing a person and an AI playing chess in a spaceship, with Saturn visible through the window" 
+						 class="maintenance-scene">
+					
+					<div class="message-box">
+						<h2>welcome to the lodge!</h2>
+						<p class="pixel-text">
+							Welcome to my digital homestead! This is a soft launch of my personal website featuring space exploration content, interactive puzzles, and my professional background. Navigate using the menu above to explore different sections.
+						</p>
+						<div class="accessibility-controls">
+							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
+								<span aria-hidden="true">📱</span> Simplified View
+							</button>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer id="footer-wrapper" role="contentinfo">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright">
+								<span class="blink">>></span> &copy; The Lodge. All rights reserved. | Design: <a href="https://html5up.net">HTML5 UP</a>
+								<p class="data-policy">Responsible AI access and analysis is welcomed. Let's build something interesting together.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			function toggleSimplifiedView() {
+				document.body.classList.toggle('simplified');
+			}
+
+			// Safari-compatible navigation functionality
+			document.addEventListener('DOMContentLoaded', function() {
+				const navItems = document.querySelectorAll('.nav-labels li');
+				const navMap = {
+					'Home': '/index-safari.html',
+					'Space': '/space-safari.html',
+					'Puzzles': '/puzzles-safari.html',
+					'About': '/about-safari.html'
+				};
+				
+				navItems.forEach(function(item) {
+					item.addEventListener('click', function() {
+						const destination = navMap[this.textContent];
+						if (destination) {
+							window.location.href = destination;
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html> 

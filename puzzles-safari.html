@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>The Lodge - Puzzles (Safari)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- Security Headers -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;">
+		<meta http-equiv="X-Frame-Options" content="DENY">
+		<meta http-equiv="X-Content-Type-Options" content="nosniff">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		
+		<!-- Additional Meta Tags -->
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="The Lodge v2.0" />
+		<meta name="author" content="Hunter Callaway" />
+		<meta name="theme-color" content="#0d1b2a" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="The Lodge">
+		<meta property="og:title" content="The Lodge - Puzzles">
+		<meta property="og:description" content="Challenge yourself with puzzles and view the leaderboard of winners.">
+		<meta property="og:url" content="https://hucallaway.github.io/puzzles.html">
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="The Lodge - Puzzles">
+		<meta name="twitter:description" content="Challenge yourself with puzzles and view the leaderboard of winners.">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+		<link rel="alternate icon" type="image/x-icon" href="assets/favicon.ico">
+		<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Safari-optimized stylesheet -->
+		<link rel="stylesheet" href="assets/css/safari.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div id="header">
+					<div id="logo-text">The Lodge</div>
+					<nav id="nav" role="navigation">
+						<ul class="nav-labels">
+							<li>Home</li>
+							<li>Space</li>
+							<li>Puzzles</li>
+							<li>About</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main>
+				<div class="puzzle-column">
+					<div class="puzzle-box">
+						<h3>Current Puzzle Challenge</h3>
+						<div class="puzzle-content">
+							<p class="riddle">
+								I dwell where giants failed to form, clad in basalt, scarred and worn - <br>
+								A hearth in name, I drift alone, holding clues to worlds long gone. <br>
+								What am I?
+							</p>
+						</div>
+					</div>
+				</div>
+				<aside class="leaderboard-column">
+					<div class="leaderboard-box">
+						<h3>Leaderboard</h3>
+						<table class="leaderboard-table">
+							<thead>
+								<tr>
+									<th>Name of Winner</th>
+									<th>Name of Challenge Won</th>
+									<th>Date of Win</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Kyle Lewis</td>
+									<td>Flagship Puzzle Challenge</td>
+									<td>June 20, 2025</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</aside>
+			</main>
+			<footer id="footer-wrapper" role="contentinfo">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright">
+								&copy; The Lodge. All rights reserved. | Design: <a href="https://html5up.net">HTML5 UP</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<script>
+				// Safari-compatible navigation functionality
+				const navItems = document.querySelectorAll('.nav-labels li');
+				const navMap = {
+					'Home': '/index-safari.html',
+					'Space': '/space-safari.html',
+					'Puzzles': '/puzzles-safari.html',
+					'About': '/about-safari.html'
+				};
+				
+				navItems.forEach(function(item) {
+					item.addEventListener('click', function() {
+						const destination = navMap[this.textContent];
+						if (destination) {
+							window.location.href = destination;
+						}
+					});
+				});
+			</script>
+		</div>
+	</body>
+</html> 

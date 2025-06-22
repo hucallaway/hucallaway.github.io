@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>The Lodge - Space (Safari)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- Security Headers -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://eyes.nasa.gov; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; connect-src 'self' https://eyes.nasa.gov; frame-src 'self' https://eyes.nasa.gov; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;">
+		<meta http-equiv="X-Frame-Options" content="DENY">
+		<meta http-equiv="X-Content-Type-Options" content="nosniff">
+		<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		
+		<!-- Additional Meta Tags -->
+		<meta name="robots" content="index, follow" />
+		<meta name="generator" content="The Lodge v2.0" />
+		<meta name="author" content="Hunter Callaway" />
+		<meta name="theme-color" content="#0d1b2a" />
+		
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="The Lodge">
+		<meta property="og:title" content="The Lodge - Space">
+		<meta property="og:description" content="Explore NASA missions and space exploration with interactive 3D visualizations.">
+		<meta property="og:url" content="https://hucallaway.github.io/space.html">
+		
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="The Lodge - Space">
+		<meta name="twitter:description" content="Explore NASA missions and space exploration with interactive 3D visualizations.">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+		<link rel="alternate icon" type="image/x-icon" href="assets/favicon.ico">
+		<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+		
+		<!-- Preconnect for performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://eyes.nasa.gov">
+		
+		<!-- Safari-optimized stylesheet -->
+		<link rel="stylesheet" href="assets/css/safari.css" />
+	</head>
+	<body>
+		<div id="page-wrapper">
+			<header id="header-wrapper" role="banner">
+				<div id="header">
+					<div id="logo-text">The Lodge</div>
+					<nav id="nav" role="navigation">
+						<ul class="nav-labels">
+							<li>Home</li>
+							<li>Space</li>
+							<li>Puzzles</li>
+							<li>About</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main>
+				<div class="container">
+					<div class="space-page-content">
+						<section class="budget-impact">
+							<h2>NASA's Future Fleet: Navigating the Proposed 2026 Budget Cuts</h2>
+							<p>
+								The White House's proposed 2026 budget for NASA includes a dramatic 24% cut to funding, reducing the agency's budget to its smallest since 1961 when adjusted for inflation. The Science Mission Directorate faces the most severe reduction, with a proposed 47% cut that threatens to defund or cancel over 40 active and future missions. According to an <a href="https://www.astronomy.com/science/this-graphic-shows-whats-at-stake-in-the-proposed-2026-nasa-budget/" target="_blank">article from Astronomy.com</a>, this could be an "extinction-level event" for NASA's science programs.
+							</p>
+							<a href="https://www.astronomy.com/science/this-graphic-shows-whats-at-stake-in-the-proposed-2026-nasa-budget/" target="_blank" class="image-link">
+								<img src="assets/css/images/Future Science Fleet Cuts.webp" alt="A graphic visualizing NASA missions impacted by the proposed 2026 budget." style="width:100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+							</a>
+							<p class="caption">
+								This graphic from Astronomy.com visualizes the NASA missions at risk. An 'X' marks missions slated for cancellation, while a '!' highlights those facing cuts of 40% or more. Click the image to read the full analysis.
+							</p>
+						</section>
+						<aside class="call-to-action">
+							<h3>Defend Planetary Science</h3>
+							<p>Many of our most successful science probes are at risk right as they enter the most cost-effective phase of their missions. The Planetary Society is leading a global petition to Congress to show universal support for NASA and its mission of scientific discovery. Anyone can add their name.</p>
+							<a href="https://planet.ly/petition" target="_blank" class="cta-button" style="width:100%; text-align: center;">Add Your Name to the Petition</a>
+						</aside>
+					</div>
+				</div>
+			</main>
+			<footer id="footer-wrapper" role="contentinfo">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div id="copyright">
+								&copy; The Lodge. All rights reserved. | Design: <a href="https://html5up.net">HTML5 UP</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<script>
+				const fullscreenBtn = document.getElementById('fullscreen-btn');
+				const viewerContainer = document.querySelector('.viewer-container');
+				// Safari-compatible navigation functionality
+				const navItems = document.querySelectorAll('.nav-labels li');
+				const navMap = {
+					'Home': '/index-safari.html',
+					'Space': '/space-safari.html',
+					'Puzzles': '/puzzles-safari.html',
+					'About': '/about-safari.html'
+				};
+				
+				navItems.forEach(function(item) {
+					item.addEventListener('click', function() {
+						const destination = navMap[this.textContent];
+						if (destination) {
+							window.location.href = destination;
+						}
+					});
+				});
+
+				fullscreenBtn.addEventListener('click', () => {
+					if (!document.fullscreenElement) {
+						viewerContainer.requestFullscreen().catch(err => {
+							alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+						});
+					} else {
+						document.exitFullscreen();
+					}
+				});
+
+				// Fallback for browsers that do not support the Fullscreen API
+				if (!viewerContainer.requestFullscreen) {
+					fullscreenBtn.addEventListener('click', () => {
+						const iframeSrc = document.getElementById('nasa-viewer').src;
+						window.open(iframeSrc, '_blank');
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html> 
