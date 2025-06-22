@@ -1348,3 +1348,17 @@ main {
 		grid-template-columns: 1fr;
 	}
 } 
+
+.puzzle-content {
+	text-align: center;
+	font-size: 1.1em;
+	line-height: 1.6;
+}
+
+.riddle {
+	margin-bottom: 1.5em;
+	font-style: italic;
+}
+
+.leaderboard-box {
+} 
