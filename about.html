@@ -184,13 +184,22 @@
 				</div>
 			</footer>
 			<script>
-				const navToggle = document.querySelector('.nav-toggle');
-				const nav = document.querySelector('#nav');
-				const navLinks = document.querySelector('.nav-links');
-
-				navToggle.addEventListener('click', () => {
-					nav.classList.toggle('nav-open');
-					navLinks.classList.toggle('active');
+				// Navigation functionality
+				const navItems = document.querySelectorAll('.nav-labels li');
+				const navMap = {
+					'Home': '/',
+					'Space': '/space.html',
+					'Puzzles': '/puzzles.html',
+					'About': '/about.html'
+				};
+				
+				navItems.forEach(item => {
+					item.addEventListener('click', function() {
+						const destination = navMap[this.textContent];
+						if (destination) {
+							window.location.href = destination;
+						}
+					});
 				});
 			</script>
 		</div>

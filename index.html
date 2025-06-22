@@ -128,7 +128,25 @@
 				document.body.classList.toggle('simplified');
 			}
 
-			// Enhanced header is now managed by CSS
+			// Navigation functionality
+			document.addEventListener('DOMContentLoaded', function() {
+				const navItems = document.querySelectorAll('.nav-labels li');
+				const navMap = {
+					'Home': '/',
+					'Space': '/space.html',
+					'Puzzles': '/puzzles.html',
+					'About': '/about.html'
+				};
+				
+				navItems.forEach(item => {
+					item.addEventListener('click', function() {
+						const destination = navMap[this.textContent];
+						if (destination) {
+							window.location.href = destination;
+						}
+					});
+				});
+			});
 		</script>
 	</body>
 </html> 
