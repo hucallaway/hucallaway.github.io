@@ -84,21 +84,16 @@
 			</header>
 
 			<main role="main" aria-label="Welcome Content">
-				<div class="content-wrapper">
+				<div class="content-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
 					<img src="assets/css/images/maintenance-deusex.png?v=1" 
 						 alt="A pixel art scene showing a person and an AI playing chess in a spaceship, with Saturn visible through the window" 
-						 class="maintenance-scene">
+						 class="maintenance-scene" style="display: block; margin: 0 auto;">
 					
 					<div class="message-box">
-						<h2>welcome to the lodge!</h2>
+						<h2>my corner of the internet</h2>
 						<p class="pixel-text">
 							Welcome to my digital homestead! This is a soft launch of my personal website featuring space exploration content, interactive puzzles, and my professional background. Navigate using the menu above to explore different sections.
 						</p>
-						<div class="accessibility-controls">
-							<button class="accessibility-button pixel-text" onclick="toggleSimplifiedView()" aria-label="Toggle simplified view">
-								<span aria-hidden="true">📱</span> Simplified View
-							</button>
-						</div>
 					</div>
 				</div>
 			</main>
@@ -124,10 +119,6 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script>
-			function toggleSimplifiedView() {
-				document.body.classList.toggle('simplified');
-			}
-
 			// Navigation functionality
 			document.addEventListener('DOMContentLoaded', function() {
 				const navItems = document.querySelectorAll('.nav-labels li');
